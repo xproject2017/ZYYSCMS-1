@@ -325,7 +325,7 @@ public class IndexController {
         view.addObject("bean", bean);
         return view;
     }
-
+     //
     @RequestMapping("/setbanner")
     @ResponseBody
     public Object setBanner(HttpServletRequest request, HttpServletResponse response, PmultiplemsgBean menu){
