@@ -1,0 +1,161 @@
+
+/*右侧内容样式*/
+body,div{ margin:0; padding:0;}
+body{font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    height:100%;width:100%;font-size: 12px;min-width: 890px;letter-spacing:1px;background-color: #eaeaea;}
+
+input[type='text'],input[type='password'],select{height:30px;font-size: 12px;border-radius: 3px;border: 1px solid #ccc;background-image: none;background-color: #fff;padding:0 0 0 2px;}
+
+
+.right-main-context{position: absolute;top: 0;width: 100%;height: 100%;min-width: 890px;}
+.right-dy-data{float: left;width: 99%;padding: 1% 0 1% 1%;height: 98%;}
+.add-btn{background: url(/image/addbtn.png) no-repeat;background-size:106px 38px;border: 0;width: 106px;height: 38px;font-size: 13px;color: #fff;outline:none;}
+
+/* list数据展示页面样式 */
+.list-table{width: 100%;float: left;height: 100%;overflow: hidden;background-color: #f9f9f9;}
+.list-table .list-th{float: left;width: 98.5%;height: 40px;font:normal 15px/40px 'Microsoft yahei';color: #a2a2a2;}
+.list-table .list-tr{float: left;width: 100%;height: 40px;font:normal 13px/40px 'Microsoft yahei';border-bottom: 1px solid #dedede;color: #363636;background-color: #fff;}
+.list-table .list-tr:hover{background-color: #eaeaea;}
+.list-table .none-data-tips{float:left;width:100%;height: 200px;line-height:200px;font-size:14px;text-align: center;color: red;}
+.list-table .list-context{/*min-height: 300px;*/background-color: #fff;float: left;width: 100%;height: calc(100% - 40px);height: -moz-calc(100% - 40px);height: -webkit-calc(100% - 40px);overflow-x: hidden;overflow-y: scroll;}
+/*产品标准库*/
+.list-table .lib-cell{float: left;width: 25%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .lib-cell:first-child{width: 33%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .lib-cell:last-child{width: 15%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .lib-cell-st{float: left;width: 32%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+/*方法标准库*/
+.list-table .mlib-cell{float: left;width: 33%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+/*网络举报*/
+.list-table .nc-lib-cell{float: left;width: 12%;height:40px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+/*大屏 检测网络*/
+.list-table .lib-cell-nt{float: left;width: 20%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .lib-cell-1{float: left;width: 25%;padding-left: 1%;}
+.lib-cell-1 label {min-width: 80px;}
+.list-table .lib-cell-2{float: left;width: 38%;}
+.list-table .lib-cell-1:first-child{width: 26%;}
+.list-table .lib-cell-1:last-child{width: 10%;}
+
+.lib-cell input[type='checkbox']{vertical-align: text-top;}
+
+.list-table .admin-task-cell{float: left;width: 16%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .risk-cell{float: left;width: 13%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .risk-lib-cell{float: left;width: 12%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .uneed{float: left;width: 32%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .needbanner{float: left;width: 23%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+
+.list-table .plan-cell{float: left;width: 20%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .plan-cell:first-child{width: 23%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .plan-cell:last-child{width: 15%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .org-cell{float: left;width: 10%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .dept-cell{float: left;width: 13%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .dept-cell:nth-child(3){float: left;width: 20%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.list-table .dept-cell:first-child{float: left;width: 15%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.list-table .task-cell{float: left;width: 15%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+#callBackPagination{float: left;width: 100%;border: 1px solid #dedede;height: calc(100% - 40px);height: -moz-calc(100% - 40px);height: -webkit-calc(100% - 40px);background-color: #fff;}
+.callBackPagination{float: left;width: 100%;border: 1px solid #dedede;height: calc(100% - 40px);height: -moz-calc(100% - 40px);height: -webkit-calc(100% - 40px);background-color: #fff;}
+#mainContent{float: left;width: 100%;height: calc(100% - 40px);height: -moz-calc(100% - 40px);height: -webkit-calc(100% - 40px);overflow: hidden;}
+.mainContent{float: left;width: 100%;height: calc(100% - 40px);height: -moz-calc(100% - 40px);height: -webkit-calc(100% - 40px);overflow: hidden;}
+#callBackPager{float: left;text-align: center;width: 100%;height: 40px;margin-top: 5px;}
+.messagetips{float: left;width: 100%;height: 40px;font:normal 13px/40px 'Microsoft yahei';padding-left:40px;color: #b05213;border: 1px solid #dbb563;
+    background: #fffac6 url(/image/warn.png) no-repeat;background-size: 20px 20px;background-position: 10px center;}
+
+.messagetips .look{float: right;margin-right: 30px;text-decoration: underline;cursor: pointer;}
+
+/*条件部分*/
+.right-cond-div{float: left;width: 100%;height:50px;}
+.right-cond-div .tab{float: left;width: 140px;height:52px;cursor:pointer;text-align:center;border-radius:5px 5px 0 0;background-color: #fff;margin-top: 8px;}
+.right-cond-div .untab{float: left;width: 140px;height:52px;cursor:pointer;text-align:center;margin-top: 8px;}
+.right-cond-div .title{float: left;width: 180px;padding-left: 10px;}
+.right-cond-div .title h4{font-weight: bold;font-size: 20px;color: #a6a6a6;}
+.right-inblock-div h5{font-weight: bold;}
+.right-cond-div .content{margin-top: 14px}
+.right-cond-div .searchinput{float: left;width: 580px;padding-top:3px;position: relative;}
+.right-cond-div .searchinput .iconsearch{width: 450px;height: 34px;padding-left:35px;background: #fff url(/image/searchicon.png) no-repeat;outline:none;border-radius:5px 0 0 5px;border:1px solid #c4c4c4;background-position: 10px center;background-size: 18px 18px;}
+.right-cond-div .right{float: right;}
+
+/*机构*/
+.right-inblock-div .cell-org{float: left;width: 30%;height: 40px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 8px;}
+.right-inblock-div .cell-org a{text-decoration:underline;}
+/*.right-inblock-div .cell-org:first-child{width: 40%}*/
+.right-inblock-div .cell-org:last-child{width: 10%}
+/*分块部分*/
+.right-inblock-div{float:left;width: 98%;padding:0 1% 1%;height: auto;background-color: #fff;border-radius: 5px;border-bottom: 1px solid #b8b8b8;margin-bottom: 10px;}
+.right-inblock-div .toggleDiv{float: left;width: 100%;}
+.right-inblock-div .title{float: left;width: 100%;border-bottom: 1px solid #d9d9d9;font-size: 15px;font-weight: bold;height: 40px;line-height: 40px;}
+.right-inblock-div .little-title{float: left;width: 100%;font-size: 15px;height: 40px;line-height: 40px;}
+.right-inblock-div .cell{float: left;width: 33%;height: 40px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 8px;}
+.right-inblock-div .cell-da{float: left;width: 16%;height: 40px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 8px;}
+.right-inblock-div .cell a{text-decoration:underline;}
+.right-inblock-div  label{font-weight: bold;font-size: 13px;color:#4c4c4c;min-width:  80px;}
+.right-inblock-div .cde{float: left;width: 1%;height: 35px;cursor: pointer;padding:10px 0 0 0;}
+.right-inblock-div .addmoudle{float: left;width: 98%;padding: 1%;height: auto;border: 1px solid #f1f1f1;margin-top: 15px;}
+.right-inblock-div .del{float:right;right: 30px;cursor: pointer;background:url(/image/del.png) no-repeat;background-size: 20px 20px;width: 20px;height: 20px;}
+.right-inblock-div .title span{cursor: pointer;}
+.right-inblock-div .title img{float: right;margin: 10px 10px 0 0;cursor: pointer;}
+.right-inblock-div .rowline{float: left;width: 100%;height: 35px;line-height: 35px;}
+.right-inblock-div .hscode{float: right;font-size: 13px;color: #434343;font-weight: normal;width: 170px;}
+.right-inblock-div .starenddate{float: right;font-size: 13px;color: #434343;font-weight: normal;width: 250px;}
+.right-inblock-div .experts-cell{float: left;width: 20%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: 33px;line-height: 33px;}
+.right-inblock-div .starendlib{float: right;font-size: 13px;color: #434343;font-weight: normal;width: 350px;line-height: initial;margin-top: 5px;}
+
+.right-inblock-div .splitline{float: left;width: 100%;border-bottom: 1px solid #d9d9d9;height: 10px;margin-bottom: 10px;}
+.right-inblock-div select{margin-left: -3px;}
+.right-inblock-div .comments{width: 100%;float: left;height: auto;margin-top: 10px;}
+.right-inblock-div input[type='checkbox']{vertical-align: text-bottom;}
+.right-inblock-div .half-div{float: left;width: 50%;height: 40px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 8px;}
+
+.addmoudle p{float: left;width: 100%;}
+.addmoudle p span{cursor: pointer;}
+.addmoudle input[type='checkbox']{vertical-align: text-bottom;}
+.right-inblock-div .cell-content{clear:both;height: auto;line-height: 35px;width: 99%}
+.right-btn{float:left;width:100%;text-align: center;height: 50px;}
+
+.pop-min-height{float: left;width: 98%;padding: 0 0 0 15px;min-height: 300px;overflow: auto;}
+
+/*检测计划*/
+.model-inblock-item{float: left;width: 100%;height: 35px;line-height: 35px;}
+.model-inblock-item .cell{float: left;width: 33%;text-overflow: ellipsis;white-space: nowrap;overflow:hidden;padding: 0 1% 0 0;}
+.model-inblock-item input[type='checkbox']{vertical-align: middle;margin: 0;}
+.model-product-div{float: left;width: 100%;height: auto;}
+.add-product-p{float:left;padding-left: 1%;}
+.add-product-p span{cursor: pointer;}
+
+/*区域选择*/
+.right-inblock-div-inner {width: 98%;padding: 1%;height: auto;margin-bottom: 5px;overflow: hidden;  }
+.right-inblock-div-inner .cell {text-align: left;float: left;width: 32%;height: 20px;line-height: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin: 3px 0 0 1%;  }
+
+
+.table th,td{
+    text-align: center;
+    white-space:nowrap;
+}
+
+hr{margin: 0;}
+
+
+
+.lib-cell input{margin-top: 5px;}
+.addicon{background: url(/image/add.png) no-repeat;background-size: 16px 16px;cursor: pointer;width: 16px;height:16px;display: inline-block;margin: 0 10px 0 0;}
+.disaddicon{background: url(/image/disadd.png) no-repeat;background-size: 16px 16px;cursor: pointer;width: 16px;height:16px;display: inline-block;margin: 0 10px 0 0;}
+.minusicon{background: url(/image/minus.png) no-repeat;background-size: 16px 16px;cursor: pointer;width: 16px;height:16px;display: inline-block;margin: 0 0 0 10px;}
+.disminusicon{background: url(/image/disminus.png) no-repeat;background-size: 16px 16px;cursor: pointer;width: 16px;height:16px;display: inline-block;margin: 0 0 0 10px;}
+.pro-text{width: 30px;height: 20px;line-height: 20px;text-align:center;vertical-align: text-bottom;}
+
+/*角色*/
+.role-name{float: left;width: 38%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+.role-authority{float: left;width: 58%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 1%;}
+
+.cooper-list{float: left;width: 100%;border: 1px solid #dedede;background-color: #fff;height: auto;}
+.cooper-div{float: left;width: 24%;padding:0 1%;border: 1px solid #dedede;margin:5px;height: 200px;position: relative;}
+.cooper-data{width: 100%;height: 200px;line-height:200px;top:0;left:0;position: absolute;background-color: rgba(255,255,255,0.8);text-align: center;display: none;color: red;font-size: 14px;}

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:Test-Spring-Config.xml"/>
+    <!--<import resource="Test-Spring-UsersCase.xml"/>-->
+    <bean id="categoryDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCcategoryDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="standardDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCcategorystandardDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="standardValueDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCcategorystandardvalueDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="checkdeptDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCheckdeptDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="planDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCplanDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="planJobDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCplanjobDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="planJobResDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCplanjobresDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="busiCorginfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.checknetwork.BusiCorginfoDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!--账户管理 -->
+    <bean id="sysStaffDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysStaffDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysUsermenusDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysUsermenusDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysMenuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysMenuDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysRoleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysRoleDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysRolemenusDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysRolemenusDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysSessionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysSessionDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="sysTipsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.system.SysTipsDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!--投诉举报 -->
+    <bean id="busiNetcomplaintDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.complaintsreport.BusiNetcomplaintDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="busiPhonecomplaintDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.complaintsreport.BusiPhonecomplaintDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="sysStaffManagerImp" class="com.cms.core.manager.admin.core.system.SysStaffManagerImp">
+    </bean>
+
+    <bean id="sysRoleManagerImp" class="com.cms.core.manager.admin.core.system.SysRoleManagerImp">
+    </bean>
+
+    <bean id="sysMenuManagerImp" class="com.cms.core.manager.admin.core.system.SysMenuManagerImp">
+    </bean>
+
+
+    <bean id="busiCcatagoryManagerImp" class="com.zxxadmin.manager.checknetwork.core.catagory.BusiCcatagoryManagerImp">
+    </bean>
+
+    <bean id="busiCheckdeptManagerImp" class="com.zxxadmin.manager.checknetwork.core.dept.BusiCheckdeptManagerImp">
+    </bean>
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+    <bean id="dictUtil" class="com.cms.util.DictUtils" scope="singleton">
+        <property name="dictsCache">
+            <map key-type="java.lang.String" value-type="java.util.List">
+                <entry key="10001">
+                    <list>
+                        <ref bean="anual_planType"/>
+                        <ref bean="special_planType"/>
+                    </list>
+                </entry>
+                <entry key="10002">
+                    <list>
+                        <ref bean="in_tradeType"/>
+                        <ref bean="out_planType"/>
+                    </list>
+                </entry>
+                <entry key="10003">
+                    <list>
+                        <ref bean="admin_roleids"/>
+                        <ref bean="center_roleids"/>
+                        <ref bean="manager_roleids"/>
+                        <ref bean="org_roleids"/>
+                    </list>
+                </entry>
+                <entry key="10004">
+                    <list>
+                        <ref bean="probType1"/>
+                        <ref bean="probType2"/>
+                        <ref bean="probType3"/>
+                        <ref bean="probType4"/>
+                        <ref bean="probType5"/>
+                    </list>
+                </entry>
+                <entry key="10005">
+                    <list>
+                        <ref bean="dflag0"/>
+                        <ref bean="dflag1"/>
+                        <ref bean="dflag2"/>
+                        <ref bean="dflag3"/>
+                    </list>
+                </entry>
+                <entry key="10006">
+                    <list>
+                        <ref bean="newworkCompyType"/>
+                        <ref bean="phoneCompyType"/>
+                    </list>
+                </entry>
+                <entry key="10007">
+                    <list>
+                        <ref bean="checknetwordType"/>
+                        <ref bean="sysType"/>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <!-- Util -->
+    <bean id="tagtypeBean" class="com.cms.core.bean.util.TagTypeBean"/>
+    <bean id="anual_planType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="年度计划"/>
+    </bean>
+    <bean id="special_planType" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="专项计划"/>
+    </bean>
+    <bean id="in_tradeType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="进口"/>
+    </bean>
+    <bean id="out_planType" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="出口"/>
+    </bean>
+
+    <bean id="admin_roleids" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="admin"/>
+    </bean>
+    <bean id="center_roleids" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="监测中心"/>
+    </bean>
+    <bean id="manager_roleids" parent="tagtypeBean">
+        <property name="value" value="3"/>
+        <property name="tagname" value="行政管理"/>
+    </bean>
+    <bean id="org_roleids" parent="tagtypeBean">
+        <property name="value" value="4"/>
+        <property name="tagname" value="检测机构"/>
+    </bean>
+
+    <bean id="probType1" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="规格问题"/>
+    </bean>
+    <bean id="probType2" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="重量短缺"/>
+    </bean>
+    <bean id="probType3" parent="tagtypeBean">
+        <property name="value" value="3"/>
+        <property name="tagname" value="包装问题"/>
+    </bean>
+    <bean id="probType4" parent="tagtypeBean">
+        <property name="value" value="4"/>
+        <property name="tagname" value="品质问题"/>
+    </bean>
+    <bean id="probType5" parent="tagtypeBean">
+        <property name="value" value="5"/>
+        <property name="tagname" value="标志标签问题"/>
+    </bean>
+
+    <bean id="dflag0" parent="tagtypeBean">
+        <property name="value" value="0"/>
+        <property name="tagname" value="未受理"/>
+    </bean>
+    <bean id="dflag1" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="不受理"/>
+    </bean>
+    <bean id="dflag2" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="提交入库"/>
+    </bean>
+    <bean id="dflag3" parent="tagtypeBean">
+        <property name="value" value="3"/>
+        <property name="tagname" value="提交专家组"/>
+    </bean>
+
+    <bean id="newworkCompyType" parent="tagtypeBean">
+        <property name="value" value="0"/>
+        <property name="tagname" value="网络"/>
+    </bean>
+    <bean id="phoneCompyType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="电话"/>
+    </bean>
+    <bean id="checknetwordType" parent="tagtypeBean">
+        <property name="value" value="0"/>
+        <property name="tagname" value="系统消息"/>
+    </bean>
+
+    <bean id="sysType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="检测网络"/>
+    </bean>
+</beans>

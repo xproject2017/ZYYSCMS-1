@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/com/cms/core/bean/util/TagTypeBean.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/cms/util/DictUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/Test-Spring-Config.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/timeout.jsp" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiPbespokeDao">
+    <select id="getBusiPbespoke" parameterType="BusiPbespoke" resultType="BusiPbespoke">
+        select * from T_BUSI_PBESPOKE
+        <where>
+            <if test="bespokeid!=null">
+                BESPOKEID=#{bespokeid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="productname!=null">
+                AND PRODUCTNAME=#{productname}</if>
+            <if test="pbespoketime!=null">
+                AND PBESPOKETIME=#{pbespoketime}</if>
+            <if test="pbespokephone!=null">
+                AND PBESPOKEPHONE=#{pbespokephone}</if>
+            <if test="pbespokename!=null">
+                AND PBESPOKENAME=#{pbespokename}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPbespokeGroup" parameterType="BusiPbespoke" resultType="hashMap">
+        select IFNULL(COUNT(BESPOKEID),0) CNT,IFNULL(MAX(BESPOKEID),0) MAXID,IFNULL(MIN(BESPOKEID),0) MINID from T_BUSI_PBESPOKE
+        <where>
+            <if test="bespokeid!=null">
+                BESPOKEID=#{bespokeid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="productname!=null">
+                AND PRODUCTNAME=#{productname}</if>
+            <if test="pbespoketime!=null">
+                AND PBESPOKETIME=#{pbespoketime}</if>
+            <if test="pbespokephone!=null">
+                AND PBESPOKEPHONE=#{pbespokephone}</if>
+            <if test="pbespokename!=null">
+                AND PBESPOKENAME=#{pbespokename}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPbespokeList" parameterType="BusiPbespoke" resultType="BusiPbespoke">
+        select * from T_BUSI_PBESPOKE
+        <where>
+            <if test="bespokeid!=null">
+                BESPOKEID=#{bespokeid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="productname!=null">
+                AND PRODUCTNAME=#{productname}</if>
+            <if test="pbespoketime!=null">
+                AND PBESPOKETIME=#{pbespoketime}</if>
+            <if test="pbespokephone!=null">
+                AND PBESPOKEPHONE=#{pbespokephone}</if>
+            <if test="pbespokename!=null">
+                AND PBESPOKENAME=#{pbespokename}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiPbespoke" useGeneratedKeys="true" keyProperty="bespokeid" parameterType="BusiPbespoke">
+        INSERT INTO T_BUSI_PBESPOKE (BESPOKEID,NAVIGATIONID1,NAVIGATIONID2,PRODUCTNAME,PBESPOKETIME,PBESPOKEPHONE,PBESPOKENAME,VIPID,FLAG,RESMES,CREATETIME,USERID,SAVETIME)
+        values(#{bespokeid},#{navigationid1},#{navigationid2},#{productname},#{pbespoketime},#{pbespokephone},#{pbespokename},#{vipid},#{flag},#{resmes},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiPbespoke" parameterType="BusiPbespoke">
+        update T_BUSI_PBESPOKE
+        <set>
+            <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+            <if test="productname!=null">PRODUCTNAME=#{productname},</if>
+            <if test="pbespoketime!=null">PBESPOKETIME=#{pbespoketime},</if>
+            <if test="pbespokephone!=null">PBESPOKEPHONE=#{pbespokephone},</if>
+            <if test="pbespokename!=null">PBESPOKENAME=#{pbespokename},</if>
+            <if test="vipid!=null">VIPID=#{vipid},</if>
+            <if test="flag!=null">FLAG=#{flag},</if>
+            <if test="resmes!=null">RESMES=#{resmes},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where BESPOKEID=#{bespokeid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiPbespoke" parameterType="BusiPbespoke">
+        delete from T_BUSI_PBESPOKE
+        where BESPOKEID=#{bespokeid}
+    </delete>
+
+    <!--前一条 后一条-->
+    <select id="getBusiPbespokeList4Next" parameterType="BusiPbespoke" resultType="BusiPbespoke">
+        <![CDATA[
+        SELECT BESPOKEID,NAVIGATIONID1,NAVIGATIONID2,PRODUCTNAME
+        FROM T_BUSI_PBESPOKE
+        WHERE    BESPOKEID IN(
+        SELECT MIN(BESPOKEID) BESPOKEID FROM T_BUSI_PBESPOKE    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND BESPOKEID>#{bespokeid}
+        UNION ALL
+        SELECT MAX(BESPOKEID) BESPOKEID FROM T_BUSI_PBESPOKE    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND BESPOKEID<#{bespokeid}
+        )
+         ]]>
+    </select>
+</mapper>

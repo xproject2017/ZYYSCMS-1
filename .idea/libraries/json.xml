@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="json">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../javalib/jsonjar/jsonjar.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../javalib/json-lib-2.1/json-lib-2.1-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../javalib/json-lib-2.1/ezmorph-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../javalib/json-lib-2.1/json_simple-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

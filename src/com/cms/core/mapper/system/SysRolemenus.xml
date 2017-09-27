@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.system.SysRolemenusDao">
+    <select id="getSysRolemenus" parameterType="SysRolemenus" resultType="SysRolemenus">
+        select * from T_SYS_ROLEMENUS
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="nodeid!=null">
+                AND NODEID=#{nodeid}</if>
+
+        </where>
+    </select>
+
+
+
+    <select id="getSysRolemenusGroup" parameterType="SysRolemenus" resultType="hashMap">
+        select IFNULL(COUNT(ID),0) CNT,IFNULL(MAX(ID),0) MAXID,IFNULL(MIN(ID),0) MINID from T_SYS_ROLEMENUS
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="nodeid!=null">
+                AND NODEID=#{nodeid}</if>
+
+        </where>
+    </select>
+
+
+
+    <select id="getSysRolemenusList" parameterType="SysRolemenus" resultType="SysRolemenus">
+        select * from T_SYS_ROLEMENUS
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="nodeid!=null">
+                AND NODEID=#{nodeid}</if>
+        </where> ORDER BY ID DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+
+    <select id="getSysRolemenusListBYnodeids" parameterType="SysRolemenus" resultType="SysRolemenus">
+        select * from T_SYS_ROLEMENUS
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="nodeids!=null">
+                AND NODEID in ( ${nodeids} )</if>
+        </where> ORDER BY ID DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addSysRolemenus" useGeneratedKeys="true" keyProperty="id" parameterType="SysRolemenus">
+        INSERT INTO T_SYS_ROLEMENUS (ID,ROLEID,NODEID)
+        values(#{id},#{roleid},#{nodeid})
+    </insert>
+
+
+    <update id="updateSysRolemenus" parameterType="SysRolemenus">
+        update T_SYS_ROLEMENUS
+        <set>
+            <if test="roleid!=null">ROLEID=#{roleid},</if>
+            <if test="nodeid!=null">NODEID=#{nodeid},</if>
+        </set>
+        where ID=#{id}
+    </update>
+
+
+    <delete id="deleteSysRolemenus" parameterType="SysRolemenus">
+        delete from T_SYS_ROLEMENUS
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="nodeid!=null">
+                AND NODEID=#{nodeid}</if>
+        </where>
+    </delete>
+</mapper>

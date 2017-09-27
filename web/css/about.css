@@ -1,0 +1,119 @@
+.banner {
+  width: 100%;
+  height: 275px;
+  position: relative; }
+
+#gsgg .articles {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 20px;
+  border: 1px solid #aaa; }
+
+#gsgg .articles li {
+  margin-top: 0;
+  line-height: 34px; }
+
+#gsgg .articles li a {
+  display: block;
+  float: left;
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 10px; }
+
+#gsgg .articles li .icon-arrow {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  bottom: -2px;
+  left: 5px; }
+
+#zxns .articles li {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 137px;
+  background: #fff;
+  border: 1px solid #aaa;
+  padding: 10px 20px;
+  float: left;
+  width: 45%; }
+
+#zxns .articles li img {
+  float: left;
+  height: 110px;
+  width: 110px;
+  background: #eee;
+  margin-top: 13px;
+  margin-right: 30px; }
+
+#zxns .articles li .art {
+  margin: 20px 30px; }
+
+#zxns .articles li .art h3 {
+  font-size: 20px;
+  cursor: pointer; }
+
+#zxns .articles li .art p {
+  margin-top: 20px;
+  line-height: 18px;
+  height: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+#gltd .articles li {
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #fff;
+  border: 1px solid #aaa;
+  padding: 10px 20px;
+  float: left;
+  width: 212px;
+  text-align: center; }
+
+#gltd .articles li img {
+  height: 250px;
+  width: 190px;
+  background: #eee;
+  margin: 10px auto; }
+
+#gltd .articles li .art {
+  margin: 20px 12px;
+  text-align: left; }
+
+#gltd .articles li .art h3 {
+  font-size: 20px;
+  cursor: pointer; }
+
+#gltd .articles li .art p {
+  margin-top: 20px;
+  line-height: 18px;
+  height: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+#lxwm {
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 20px;
+  border: 1px solid #aaa;
+  height: 360px; }
+
+#lxwm .baidumap {
+  padding: 0;
+  margin: 0;
+  float: left; }
+
+#lxwm .companyinfo {
+  float: left;
+  margin-left: 35px;
+  width: 400px; }
+
+#lxwm .companyinfo .text {
+  line-height: 25px; }
+
+#lxwm .companyinfo .qrcode {
+  width: 106px;
+  height: 106px; }

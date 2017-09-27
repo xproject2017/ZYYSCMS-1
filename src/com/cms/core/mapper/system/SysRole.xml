@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.system.SysRoleDao">
+    <select id="getSysRole" parameterType="SysRole" resultType="SysRole">
+        select * from T_SYS_ROLE
+        <where>
+            <if test="roleid!=null">
+                ROLEID=#{roleid}</if>
+            <if test="rolename!=null">
+                AND ROLENAME=#{rolename}</if>
+
+        </where>
+    </select>
+    <select id="getSysRoleGroup" parameterType="SysRole" resultType="hashMap">
+        select IFNULL(COUNT(ROLEID),0) CNT,IFNULL(MAX(ROLEID),0) MAXID,IFNULL(MIN(ROLEID),0) MINID from T_SYS_ROLE
+        <where>
+            <if test="roleid!=null">
+                ROLEID=#{roleid}</if>
+            <if test="rolename!=null">
+                AND ROLENAME=#{rolename}</if>
+        </where>
+    </select>
+    <select id="getSysRoleList" parameterType="SysRole" resultType="SysRole">
+        select * from T_SYS_ROLE
+        <where>
+            <if test="roleid!=null">
+                ROLEID=#{roleid}</if>
+            <if test="rolename!=null">
+                AND ROLENAME LIKE '%${rolename}%'</if>
+        </where> ORDER BY ROLEID DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+
+    <select id="getSysRoleList_gt_rid" parameterType="SysRole" resultType="SysRole">
+        select * from T_SYS_ROLE
+        <where>
+            <if test="1==1">
+                ROLEID!=1</if>
+            <if test="roleid!=null">
+                AND ROLEID>#{roleid}</if>
+            <if test="rolename!=null">
+                AND ROLENAME LIKE '%${rolename}%'</if>
+        </where>
+    </select>
+
+
+    <insert id="addSysRole" useGeneratedKeys="true" keyProperty="roleid" parameterType="SysRole">
+INSERT INTO T_SYS_ROLE (ROLEID,ROLENAME,CREATETIME,SAVETIME)
+values(#{roleid},#{rolename},NOW(),NOW())
+    </insert>
+    <update id="updateSysRole" parameterType="SysRole">
+        update T_SYS_ROLE
+        <set>
+            <if test="rolename!=null">ROLENAME=#{rolename},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where ROLEID=#{roleid}       AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteSysRole" parameterType="SysRole">
+        delete from T_SYS_ROLE
+        where ROLEID=#{roleid}
+    </delete>
+</mapper>

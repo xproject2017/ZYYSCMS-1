@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <!--系统bean -->
+        <typeAlias 	type="com.cms.core.bean.cms.core.TSysRole" 	alias="SysRole" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TSysRolemenus" 	alias="SysRolemenus" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TSysMenu" 	alias="SysMenu" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TSysSession" 	alias="SysSession" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TSysStaff" 	alias="SysStaff" 	/>
+
+        <!--业务bean -->
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiApply" 	alias="BusiApply" 	/>
+
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiExercises" 	alias="BusiExercises" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiCserrviceqq" 	alias="BusiCserrviceqq" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiIndustryinformation" 	alias="BusiIndustryinformation" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPproductcase" 	alias="BusiPproductcase" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestexercise" 	alias="BusiTestexercise" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestpaper" 	alias="BusiTestpaper" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestpapervip" 	alias="TBusiTestpapervip" 	/>
+
+
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiNavigationid1" 	alias="BusiNavigationid1" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiNavigationid2" 	alias="BusiNavigationid2" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPbespoke" 	alias="BusiPbespoke" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPconsultation" 	alias="BusiPconsultation" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPmultiplemsg" 	alias="BusiPmultiplemsg" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPnes" 	alias="BusiPnes" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPnotice" 	alias="BusiPnotice" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPproduct" 	alias="BusiPproduct" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPquestion" 	alias="BusiPquestion" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiRecruit" 	alias="BusiRecruit" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiVip" 	alias="BusiVip" 	/>
+
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiPproductcase" 	alias="BusiPproductcase" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiCserrviceqq" 	alias="BusiCserrviceqq" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiExercises" 	alias="BusiExercises" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestpapervip" 	alias="BusiTestpapervip" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiIndustryinformation" 	alias="BusiIndustryinformation" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestexercise" 	alias="BusiTestexercise" 	/>
+        <typeAlias 	type="com.cms.core.bean.cms.core.TBusiTestpaper" 	alias="BusiTestpaper" 	/>
+
+    </typeAliases>
+</configuration>

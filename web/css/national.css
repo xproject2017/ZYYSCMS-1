@@ -1,0 +1,18 @@
+/* 用户权限样式 */
+.role-div{position: relative;width: 120px;height: 75px;z-index: 1;top:92px;left: 41%;background-color:#eaeaea;border: 1px solid #eaeaea;border-radius: 5px;padding-left: 5px;}
+.role-div input[type='checkbox']{vertical-align: text-bottom;}
+.center-role,.org-role,.manager-role{width: 100%;height: 25px;line-height: 25px;position: absolute;}
+.center-role{top:0;}
+.manager-role{top:25px;}
+.org-role{top:50px;}
+
+#role-text{background: url(/image/up.png) no-repeat;background-size: 20px 20px;background-position: right center;cursor: pointer;}
+
+.account-div{width:100%;overflow-x: auto;overflow-y: hidden;}
+.account-div input[type='checkbox']{vertical-align: text-bottom;}
+
+.block-account{float: left;width: 20%;padding: 10px;min-height:230px;}
+
+.first-level{float:left;width: 100%;padding: 0 0 0 10px;}
+
+.second-level{float: left;width: 100%;background: url(/image/rolebg.png) no-repeat;background-size:30px 30px;padding: 18px 0 0 30px;height: 30px;vertical-align: bottom;}

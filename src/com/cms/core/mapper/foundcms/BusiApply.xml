@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiApplyDao">
+    <select id="getBusiApply" parameterType="BusiApply" resultType="BusiApply">
+        select * from T_BUSI_APPLY
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="applyposition!=null">
+                AND APPLYPOSITION=#{applyposition}</if>
+            <if test="applytime!=null">
+                AND APPLYTIME=#{applytime}</if>
+            <if test="applyphone!=null">
+                AND APPLYPHONE=#{applyphone}</if>
+            <if test="applyemail!=null">
+                AND APPLYEMAIL=#{applyemail}</if>
+            <if test="applyaddress!=null">
+                AND APPLYADDRESS=#{applyaddress}</if>
+            <if test="applyname!=null">
+                AND APPLYNAME=#{applyname}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="birthday!=null">
+                AND BIRTHDAY=#{birthday}</if>
+            <if test="unative!=null">
+                AND UNATIVE=#{unative}</if>
+            <if test="education!=null">
+                AND EDUCATION=#{education}</if>
+            <if test="graduateschool!=null">
+                AND GRADUATESCHOOL=#{graduateschool}</if>
+            <if test="profession!=null">
+                AND PROFESSION=#{profession}</if>
+            <if test="graduatetime!=null">
+                AND GRADUATETIME=#{graduatetime}</if>
+            <if test="expectedsalary!=null">
+                AND EXPECTEDSALARY=#{expectedsalary}</if>
+            <if test="contractexpectation!=null">
+                AND CONTRACTEXPECTATION=#{contractexpectation}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiApplyGroup" parameterType="BusiApply" resultType="hashMap">
+        select IFNULL(COUNT(ID),0) CNT,IFNULL(MAX(ID),0) MAXID,IFNULL(MIN(ID),0) MINID from T_BUSI_APPLY
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="applyposition!=null">
+                AND APPLYPOSITION=#{applyposition}</if>
+            <if test="applytime!=null">
+                AND APPLYTIME=#{applytime}</if>
+            <if test="applyphone!=null">
+                AND APPLYPHONE=#{applyphone}</if>
+            <if test="applyemail!=null">
+                AND APPLYEMAIL=#{applyemail}</if>
+            <if test="applyaddress!=null">
+                AND APPLYADDRESS=#{applyaddress}</if>
+            <if test="applyname!=null">
+                AND APPLYNAME=#{applyname}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="birthday!=null">
+                AND BIRTHDAY=#{birthday}</if>
+            <if test="unative!=null">
+                AND UNATIVE=#{unative}</if>
+            <if test="education!=null">
+                AND EDUCATION=#{education}</if>
+            <if test="graduateschool!=null">
+                AND GRADUATESCHOOL=#{graduateschool}</if>
+            <if test="profession!=null">
+                AND PROFESSION=#{profession}</if>
+            <if test="graduatetime!=null">
+                AND GRADUATETIME=#{graduatetime}</if>
+            <if test="expectedsalary!=null">
+                AND EXPECTEDSALARY=#{expectedsalary}</if>
+            <if test="contractexpectation!=null">
+                AND CONTRACTEXPECTATION=#{contractexpectation}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiApplyList" parameterType="BusiApply" resultType="BusiApply">
+        select * from T_BUSI_APPLY
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="applyposition!=null">
+                AND APPLYPOSITION=#{applyposition}</if>
+            <if test="applytime!=null">
+                AND APPLYTIME=#{applytime}</if>
+            <if test="applyphone!=null">
+                AND APPLYPHONE=#{applyphone}</if>
+            <if test="applyemail!=null">
+                AND APPLYEMAIL=#{applyemail}</if>
+            <if test="applyaddress!=null">
+                AND APPLYADDRESS=#{applyaddress}</if>
+            <if test="applyname!=null">
+                AND APPLYNAME=#{applyname}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="birthday!=null">
+                AND BIRTHDAY=#{birthday}</if>
+            <if test="unative!=null">
+                AND UNATIVE=#{unative}</if>
+            <if test="education!=null">
+                AND EDUCATION=#{education}</if>
+            <if test="graduateschool!=null">
+                AND GRADUATESCHOOL=#{graduateschool}</if>
+            <if test="profession!=null">
+                AND PROFESSION=#{profession}</if>
+            <if test="graduatetime!=null">
+                AND GRADUATETIME=#{graduatetime}</if>
+            <if test="expectedsalary!=null">
+                AND EXPECTEDSALARY=#{expectedsalary}</if>
+            <if test="contractexpectation!=null">
+                AND CONTRACTEXPECTATION=#{contractexpectation}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiApply" useGeneratedKeys="true" keyProperty="id" parameterType="BusiApply">
+        INSERT INTO T_BUSI_APPLY (ID,APPLYPOSITION,APPLYTIME,APPLYPHONE,APPLYEMAIL,APPLYADDRESS,APPLYNAME,GENDER,BIRTHDAY,UNATIVE,EDUCATION,GRADUATESCHOOL,PROFESSION,GRADUATETIME,EXPECTEDSALARY,CONTRACTEXPECTATION,FLAG,RESMES,CREATETIME,USERID,SAVETIME)
+        values(#{id},#{applyposition},#{applytime},#{applyphone},#{applyemail},#{applyaddress},#{applyname},#{gender},#{birthday},#{unative},#{education},#{graduateschool},#{profession},#{graduatetime},#{expectedsalary},#{contractexpectation},#{flag},#{resmes},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiApply" parameterType="BusiApply">
+        update T_BUSI_APPLY
+        <set>
+              <if test="applyposition!=null">APPLYPOSITION=#{applyposition},</if>
+            <if test="applytime!=null">APPLYTIME=#{applytime},</if>
+            <if test="applyphone!=null">APPLYPHONE=#{applyphone},</if>
+            <if test="applyemail!=null">APPLYEMAIL=#{applyemail},</if>
+            <if test="applyaddress!=null">APPLYADDRESS=#{applyaddress},</if>
+            <if test="applyname!=null">APPLYNAME=#{applyname},</if>
+            <if test="gender!=null">GENDER=#{gender},</if>
+            <if test="birthday!=null">BIRTHDAY=#{birthday},</if>
+            <if test="unative!=null">UNATIVE=#{unative},</if>
+            <if test="education!=null">EDUCATION=#{education},</if>
+            <if test="graduateschool!=null">GRADUATESCHOOL=#{graduateschool},</if>
+            <if test="profession!=null">PROFESSION=#{profession},</if>
+            <if test="graduatetime!=null">GRADUATETIME=#{graduatetime},</if>
+            <if test="expectedsalary!=null">EXPECTEDSALARY=#{expectedsalary},</if>
+            <if test="contractexpectation!=null">CONTRACTEXPECTATION=#{contractexpectation},</if>
+            <if test="flag!=null">FLAG=#{flag},</if>
+            <if test="resmes!=null">RESMES=#{resmes},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where ID=#{id}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiApply" parameterType="BusiApply">
+        delete from T_BUSI_APPLY
+              where ID=#{id}
+    </delete>
+</mapper>

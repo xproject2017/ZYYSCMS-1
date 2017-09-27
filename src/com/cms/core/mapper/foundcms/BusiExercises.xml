@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiExercisesDao">
+    <select id="getBusiExercises" parameterType="BusiExercises" resultType="BusiExercises">
+        select * from T_BUSI_EXERCISES
+        <where>
+            <if test="eid!=null">
+                EID=#{eid}</if>
+            <if test="etitle!=null">
+                AND ETITLE=#{etitle}</if>
+            <if test="etype!=null">
+                AND ETYPE=#{etype}</if>
+            <if test="option1!=null">
+                AND OPTION1=#{option1}</if>
+            <if test="option2!=null">
+                AND OPTION2=#{option2}</if>
+            <if test="option3!=null">
+                AND OPTION3=#{option3}</if>
+            <if test="option4!=null">
+                AND OPTION4=#{option4}</if>
+            <if test="option5!=null">
+                AND OPTION5=#{option5}</if>
+            <if test="option6!=null">
+                AND OPTION6=#{option6}</if>
+            <if test="option7!=null">
+                AND OPTION7=#{option7}</if>
+            <if test="option8!=null">
+                AND OPTION8=#{option8}</if>
+            <if test="option1score!=null">
+                AND OPTION1SCORE=#{option1score}</if>
+            <if test="option2score!=null">
+                AND OPTION2SCORE=#{option2score}</if>
+            <if test="option3score!=null">
+                AND OPTION3SCORE=#{option3score}</if>
+            <if test="option4score!=null">
+                AND OPTION4SCORE=#{option4score}</if>
+            <if test="option5score!=null">
+                AND OPTION5SCORE=#{option5score}</if>
+            <if test="option6score!=null">
+                AND OPTION6SCORE=#{option6score}</if>
+            <if test="option7score!=null">
+                AND OPTION7SCORE=#{option7score}</if>
+            <if test="option8score!=null">
+                AND OPTION8SCORE=#{option8score}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiExercisesGroup" parameterType="BusiExercises" resultType="hashMap">
+    select IFNULL(COUNT(EID),0) CNT,IFNULL(MAX(EID),0) MAXID,IFNULL(MIN(EID),0) MINID from T_BUSI_EXERCISES
+    <where>
+        <if test="eid!=null">
+            EID=#{eid}</if>
+        <if test="etitle!=null">
+            AND ETITLE=#{etitle}</if>
+        <if test="etype!=null">
+            AND ETYPE=#{etype}</if>
+        <if test="option1!=null">
+            AND OPTION1=#{option1}</if>
+        <if test="option2!=null">
+            AND OPTION2=#{option2}</if>
+        <if test="option3!=null">
+            AND OPTION3=#{option3}</if>
+        <if test="option4!=null">
+            AND OPTION4=#{option4}</if>
+        <if test="option5!=null">
+            AND OPTION5=#{option5}</if>
+        <if test="option6!=null">
+            AND OPTION6=#{option6}</if>
+        <if test="option7!=null">
+            AND OPTION7=#{option7}</if>
+        <if test="option8!=null">
+            AND OPTION8=#{option8}</if>
+        <if test="option1score!=null">
+            AND OPTION1SCORE=#{option1score}</if>
+        <if test="option2score!=null">
+            AND OPTION2SCORE=#{option2score}</if>
+        <if test="option3score!=null">
+            AND OPTION3SCORE=#{option3score}</if>
+        <if test="option4score!=null">
+            AND OPTION4SCORE=#{option4score}</if>
+        <if test="option5score!=null">
+            AND OPTION5SCORE=#{option5score}</if>
+        <if test="option6score!=null">
+            AND OPTION6SCORE=#{option6score}</if>
+        <if test="option7score!=null">
+            AND OPTION7SCORE=#{option7score}</if>
+        <if test="option8score!=null">
+            AND OPTION8SCORE=#{option8score}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+
+    </where>
+    </select>
+
+    <select id="getBusiExercisesList" parameterType="BusiExercises" resultType="BusiExercises">
+    select * from T_BUSI_EXERCISES
+    <where>
+        <if test="eid!=null">
+            EID=#{eid}</if>
+        <if test="etitle!=null">
+            AND ETITLE=#{etitle}</if>
+        <if test="etype!=null">
+            AND ETYPE=#{etype}</if>
+        <if test="option1!=null">
+            AND OPTION1=#{option1}</if>
+        <if test="option2!=null">
+            AND OPTION2=#{option2}</if>
+        <if test="option3!=null">
+            AND OPTION3=#{option3}</if>
+        <if test="option4!=null">
+            AND OPTION4=#{option4}</if>
+        <if test="option5!=null">
+            AND OPTION5=#{option5}</if>
+        <if test="option6!=null">
+            AND OPTION6=#{option6}</if>
+        <if test="option7!=null">
+            AND OPTION7=#{option7}</if>
+        <if test="option8!=null">
+            AND OPTION8=#{option8}</if>
+        <if test="option1score!=null">
+            AND OPTION1SCORE=#{option1score}</if>
+        <if test="option2score!=null">
+            AND OPTION2SCORE=#{option2score}</if>
+        <if test="option3score!=null">
+            AND OPTION3SCORE=#{option3score}</if>
+        <if test="option4score!=null">
+            AND OPTION4SCORE=#{option4score}</if>
+        <if test="option5score!=null">
+            AND OPTION5SCORE=#{option5score}</if>
+        <if test="option6score!=null">
+            AND OPTION6SCORE=#{option6score}</if>
+        <if test="option7score!=null">
+            AND OPTION7SCORE=#{option7score}</if>
+        <if test="option8score!=null">
+            AND OPTION8SCORE=#{option8score}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+    </where> ORDER BY CREATETIME DESC
+    <if test="currentPage!=null and pageSize!=null">
+        <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+    </if></select>
+
+    <insert id="addBusiExercises" useGeneratedKeys="true" keyProperty="eid" parameterType="BusiExercises">
+    INSERT INTO T_BUSI_EXERCISES (EID,ETITLE,ETYPE,OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION1SCORE,OPTION2SCORE,OPTION3SCORE,OPTION4SCORE,OPTION5SCORE,OPTION6SCORE,OPTION7SCORE,OPTION8SCORE,CREATETIME,USERID,SAVETIME)
+    values(#{eid},#{etitle},#{etype},#{option1},#{option2},#{option3},#{option4},#{option5},#{option6},#{option7},#{option8},#{option1score},#{option2score},#{option3score},#{option4score},#{option5score},#{option6score},#{option7score},#{option8score},NOW(),#{userid},NOW())
+    </insert>
+    <update id="updateBusiExercises" parameterType="BusiExercises">
+    update T_BUSI_EXERCISES
+    <set>
+        <if test="eid!=null">EID=#{eid},</if>
+        <if test="etitle!=null">ETITLE=#{etitle},</if>
+        <if test="etype!=null">ETYPE=#{etype},</if>
+        <if test="option1!=null">OPTION1=#{option1},</if>
+        <if test="option2!=null">OPTION2=#{option2},</if>
+        <if test="option3!=null">OPTION3=#{option3},</if>
+        <if test="option4!=null">OPTION4=#{option4},</if>
+        <if test="option5!=null">OPTION5=#{option5},</if>
+        <if test="option6!=null">OPTION6=#{option6},</if>
+        <if test="option7!=null">OPTION7=#{option7},</if>
+        <if test="option8!=null">OPTION8=#{option8},</if>
+        <if test="option1score!=null">OPTION1SCORE=#{option1score},</if>
+        <if test="option2score!=null">OPTION2SCORE=#{option2score},</if>
+        <if test="option3score!=null">OPTION3SCORE=#{option3score},</if>
+        <if test="option4score!=null">OPTION4SCORE=#{option4score},</if>
+        <if test="option5score!=null">OPTION5SCORE=#{option5score},</if>
+        <if test="option6score!=null">OPTION6SCORE=#{option6score},</if>
+        <if test="option7score!=null">OPTION7SCORE=#{option7score},</if>
+        <if test="option8score!=null">OPTION8SCORE=#{option8score},</if>
+        <if test="userid!=null">USERID=#{userid},</if>
+        <if test="1==1">SAVETIME=NOW(),</if>
+    </set>
+    where EID = #{eid}
+    AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiExercises" parameterType="BusiExercises">
+    delete from T_BUSI_EXERCISES
+    where EID = #{eid}
+    </delete>
+</mapper>

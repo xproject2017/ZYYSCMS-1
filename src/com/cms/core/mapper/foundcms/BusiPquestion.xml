@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiPquestionDao">
+    <select id="getBusiPquestion" parameterType="BusiPquestion" resultType="BusiPquestion">
+        select * from T_BUSI_PQUESTION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPquestionGroup" parameterType="BusiPquestion" resultType="hashMap">
+        select IFNULL(COUNT(MESGID),0) CNT,IFNULL(MAX(MESGID),0) MAXID,IFNULL(MIN(MESGID),0) MINID from T_BUSI_PQUESTION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPquestionList" parameterType="BusiPquestion" resultType="BusiPquestion">
+        select * from T_BUSI_PQUESTION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiPquestion" useGeneratedKeys="true" keyProperty="mesgid" parameterType="BusiPquestion">
+        INSERT INTO T_BUSI_PQUESTION (MESGID,NAVIGATIONID1,NAVIGATIONID2,MBANNER,MMSGC,MTAGS,MTITLE,MES,ELLIPTICAL,CREATETIME,USERID,SAVETIME)
+        values(#{mesgid},#{navigationid1},#{navigationid2},#{mbanner},#{mmsgc},#{mtags},#{mtitle},#{mes},#{elliptical},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiPquestion" parameterType="BusiPquestion">
+        update T_BUSI_PQUESTION
+        <set>
+            <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+            <if test="mbanner!=null">MBANNER=#{mbanner},</if>
+            <if test="mmsgc!=null">MMSGC=#{mmsgc},</if>
+            <if test="mtags!=null">MTAGS=#{mtags},</if>
+            <if test="mtitle!=null">MTITLE=#{mtitle},</if>
+            <if test="mes!=null">MES=#{mes},</if>
+            <if test="elliptical!=null">ELLIPTICAL=#{elliptical},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where MESGID=#{mesgid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiPquestion" parameterType="BusiPquestion">
+        delete from T_BUSI_PQUESTION
+        where MESGID=#{mesgid}
+    </delete>
+
+    <!--前一条 后一条-->
+    <select id="getBusiPquestionList4Next" parameterType="BusiPquestion" resultType="BusiPquestion">
+        <![CDATA[
+        SELECT MESGID,NAVIGATIONID1,NAVIGATIONID2,MTITLE
+        FROM T_BUSI_PQUESTION
+        WHERE    MESGID IN(
+        SELECT MIN(MESGID) MESGID FROM T_BUSI_PQUESTION    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND MESGID>#{mesgid}
+        UNION ALL
+        SELECT MAX(MESGID) MESGID FROM T_BUSI_PQUESTION    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND MESGID<#{mesgid}
+        )
+         ]]>
+    </select>
+</mapper>

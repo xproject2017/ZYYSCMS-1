@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiTestpaperDao">
+    <select id="getBusiTestpaper" parameterType="BusiTestpaper" resultType="BusiTestpaper">
+        select * from T_BUSI_TESTPAPER
+        <where>
+            <if test="tid!=null">
+                TID=#{tid}</if>
+            <if test="etitle!=null">
+                AND ETITLE=#{etitle}</if>
+            <if test="scoringstandard!=null">
+                AND SCORINGSTANDARD=#{scoringstandard}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestpaperGroup" parameterType="BusiTestpaper" resultType="hashMap">
+        select IFNULL(COUNT(TID),0) CNT,IFNULL(MAX(TID),0) MAXID,IFNULL(MIN(TID),0) MINID from T_BUSI_TESTPAPER
+        <where>
+            <if test="tid!=null">
+                TID=#{tid}</if>
+            <if test="etitle!=null">
+                AND ETITLE=#{etitle}</if>
+            <if test="scoringstandard!=null">
+                AND SCORINGSTANDARD=#{scoringstandard}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestpaperList" parameterType="BusiTestpaper" resultType="BusiTestpaper">
+        select * from T_BUSI_TESTPAPER
+        <where>
+            <if test="tid!=null">
+                TID=#{tid}</if>
+            <if test="etitle!=null">
+                AND ETITLE=#{etitle}</if>
+            <if test="scoringstandard!=null">
+                AND SCORINGSTANDARD=#{scoringstandard}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiTestpaper" useGeneratedKeys="true" keyProperty="tid" parameterType="BusiTestpaper">
+        INSERT INTO T_BUSI_TESTPAPER (TID,ETITLE,SCORINGSTANDARD,CREATETIME,USERID,SAVETIME)
+        values(#{tid},#{etitle},#{scoringstandard},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiTestpaper" parameterType="BusiTestpaper">
+        update T_BUSI_TESTPAPER
+        <set>
+            <if test="etitle!=null">ETITLE=#{etitle},</if>
+            <if test="scoringstandard!=null">SCORINGSTANDARD=#{scoringstandard},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where tid = #{tid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiTestpaper" parameterType="BusiTestpaper">
+        delete from T_BUSI_TESTPAPER
+        where tid = #{tid}
+    </delete>
+
+    <select id="getExercises" parameterType="BusiTestpaper" resultType="BusiExercises">
+        select * from T_BUSI_EXERCISES T
+        where EXISTS (
+           SELECT 1 FROM T_BUSI_TESTPAPER P,T_BUSI_TESTPAPEREXERCISES TE
+           WHERE P.TID= TE.TID
+            AND T.EID = TE.EID
+            AND P.TID= #{tid}
+        )
+    </select>
+    <select id="getNoexercises" parameterType="BusiTestpaper" resultType="BusiExercises">
+        select * from T_BUSI_EXERCISES T
+        where NOT EXISTS (
+        SELECT 1 FROM T_BUSI_TESTPAPER P,T_BUSI_TESTPAPEREXERCISES TE
+        WHERE P.TID= TE.TID
+        AND T.EID = TE.EID
+        AND P.TID= #{tid}
+        )
+    </select>
+
+
+</mapper>

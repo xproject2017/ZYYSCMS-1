@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiNavigationid1Dao">
+    <select id="getBusiNavigationid1" parameterType="BusiNavigationid1" resultType="BusiNavigationid1">
+        select * from T_BUSI_NAVIGATIONID1
+        <where>
+            <if test="navigationid1!=null">
+                NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationname1!=null">
+                AND NAVIGATIONNAME1=#{navigationname1}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiNavigationid1Group" parameterType="BusiNavigationid1" resultType="hashMap">
+        select IFNULL(COUNT(NAVIGATIONID1),0) CNT,IFNULL(MAX(NAVIGATIONID1),0) MAXID,IFNULL(MIN(NAVIGATIONID1),0) MINID from T_BUSI_NAVIGATIONID1
+        <where>
+            <if test="navigationid1!=null">
+                NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationname1!=null">
+                AND NAVIGATIONNAME1=#{navigationname1}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiNavigationid1List" parameterType="BusiNavigationid1" resultType="BusiNavigationid1">
+        select * from T_BUSI_NAVIGATIONID1
+        <where>
+            <if test="navigationid1!=null">
+                NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationname1!=null">
+                AND NAVIGATIONNAME1=#{navigationname1}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiNavigationid1" useGeneratedKeys="true" keyProperty="navigationid1" parameterType="BusiNavigationid1">
+        INSERT INTO T_BUSI_NAVIGATIONID1 (NAVIGATIONID1,NAVIGATIONNAME1)
+        values(#{navigationid1},#{navigationname1})
+    </insert>
+
+    <update id="updateBusiNavigationid1" parameterType="BusiNavigationid1">
+        update T_BUSI_NAVIGATIONID1
+        <set>
+            <if test="navigationname1!=null">NAVIGATIONNAME1=#{navigationname1},</if>
+        </set>
+        where NAVIGATIONID1=#{navigationid1}
+    </update>
+
+    <delete id="deleteBusiNavigationid1" parameterType="BusiNavigationid1">
+        delete from T_BUSI_NAVIGATIONID1
+        where NAVIGATIONID1=#{navigationid1}
+    </delete>
+</mapper>

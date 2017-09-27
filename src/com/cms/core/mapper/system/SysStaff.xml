@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.system.SysStaffDao">
+    <select id="getSysStaff" parameterType="SysStaff" resultType="SysStaff">
+        select * from T_SYS_STAFF
+        <where>
+            <if test="userid!=null">
+                USERID=#{userid}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="permissionflag!=null">
+                AND PERMISSIONFLAG=#{permissionflag}</if>
+            <if test="username!=null">
+                AND USERNAME=#{username}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="cuserid!=null">
+                AND CUSERID=#{cuserid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+        </where>
+    </select>
+
+    <select id="getSysStaffListByUName" parameterType="SysStaff" resultType="SysStaff">
+        select * from T_SYS_STAFF
+            <where>
+                <if test="userid!=null">
+                    USERID=#{userid}</if>
+                <if test="roleid!=null">
+                    AND ROLEID=#{roleid}</if>
+                <if test="ustatus!=null">
+                    AND USTATUS=#{ustatus}</if>
+                <if test="permissionflag!=null">
+                    AND PERMISSIONFLAG=#{permissionflag}</if>
+                <if test="username!=null">
+                    AND USERNAME=#{username}</if>
+                <if test="userpassword!=null">
+                    AND USERPASSWORD=#{userpassword}</if>
+                <if test="userstatus!=null">
+                    AND USERSTATUS=#{userstatus}</if>
+                <if test="usertelephone!=null">
+                    AND USERTELEPHONE=#{usertelephone}</if>
+                <if test="uname!=null">
+                    AND UNAME=#{uname}</if>
+                <if test="cuserid!=null">
+                    AND CUSERID=#{cuserid}</if>
+                <if test="createtime!=null">
+                    AND CREATETIME>=#{createtime}</if>
+        </where>ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if>
+    </select>
+
+
+
+    <select id="getSysStaffGroup" parameterType="SysStaff" resultType="hashMap">
+        select IFNULL(COUNT(USERID),0) CNT,IFNULL(MAX(USERID),0) MAXID,IFNULL(MIN(USERID),0) MINID from T_SYS_STAFF
+        <where>
+            <if test="userid!=null">
+                USERID=#{userid}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="permissionflag!=null">
+                AND PERMISSIONFLAG=#{permissionflag}</if>
+            <if test="username!=null">
+                AND USERNAME=#{username}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="cuserid!=null">
+                AND CUSERID=#{cuserid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+
+        </where>
+    </select>
+
+    <select id="getSysStaffGroupByUName" parameterType="SysStaff" resultType="hashMap">
+        select IFNULL(COUNT(USERID),0) CNT,IFNULL(MAX(USERID),0) MAXID,IFNULL(MIN(USERID),0) MINID from T_SYS_STAFF
+            <where>
+                <if test="userid!=null">
+                    USERID=#{userid}</if>
+                <if test="roleid!=null">
+                    AND ROLEID=#{roleid}</if>
+                <if test="ustatus!=null">
+                    AND USTATUS=#{ustatus}</if>
+                <if test="permissionflag!=null">
+                    AND PERMISSIONFLAG=#{permissionflag}</if>
+                <if test="username!=null">
+                    AND USERNAME=#{username}</if>
+                <if test="userpassword!=null">
+                    AND USERPASSWORD=#{userpassword}</if>
+                <if test="userstatus!=null">
+                    AND USERSTATUS=#{userstatus}</if>
+                <if test="usertelephone!=null">
+                    AND USERTELEPHONE=#{usertelephone}</if>
+                <if test="uname!=null">
+                    AND UNAME=#{uname}</if>
+                <if test="cuserid!=null">
+                    AND CUSERID=#{cuserid}</if>
+                <if test="createtime!=null">
+                    AND CREATETIME>=#{createtime}</if>
+        </where>
+    </select>
+
+
+
+    <select id="getSysStaffList" parameterType="SysStaff" resultType="SysStaff">
+        select * from T_SYS_STAFF
+        <where>
+            <if test="userid!=null">
+                USERID=#{userid}</if>
+            <if test="roleid!=null">
+                AND ROLEID=#{roleid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="permissionflag!=null">
+                AND PERMISSIONFLAG=#{permissionflag}</if>
+            <if test="username!=null">
+                AND USERNAME=#{username}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="cuserid!=null">
+                AND CUSERID=#{cuserid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+
+    <insert id="addSysStaff" useGeneratedKeys="true" keyProperty="userid" parameterType="SysStaff">
+INSERT INTO T_SYS_STAFF (USERID,ROLEID,USTATUS,PERMISSIONFLAG,USERNAME,USERPASSWORD,USERSTATUS,USERTELEPHONE,UNAME,CUSERID,CREATETIME,SAVETIME)
+values(#{userid},#{roleid},#{ustatus},#{permissionflag},#{username},#{userpassword},#{userstatus},#{usertelephone},#{uname},#{cuserid},NOW(),NOW())
+    </insert>
+
+
+
+    <update id="updateSysStaff" parameterType="SysStaff">
+        update T_SYS_STAFF
+        <set>
+            <if test="roleid!=null">ROLEID=#{roleid},</if>
+            <if test="ustatus!=null">USTATUS=#{ustatus},</if>
+            <if test="permissionflag!=null">PERMISSIONFLAG=#{permissionflag},</if>
+            <if test="userpassword!=null">USERPASSWORD=#{userpassword},</if>
+            <if test="userstatus!=null">USERSTATUS=#{userstatus},</if>
+            <if test="usertelephone!=null">USERTELEPHONE=#{usertelephone},</if>
+            <if test="uname!=null">UNAME=#{uname},</if>
+            <if test="cuserid!=null">CUSERID=#{cuserid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where USERID=#{userid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+
+    <delete id="deleteSysStaff" parameterType="SysStaff">
+        delete from T_SYS_STAFF
+        where USERID=#{userid}
+    </delete>
+
+
+    <select id="getSysStaffListByMenu4Ctl" parameterType="SysMenu" resultType="SysStaff">
+        SELECT * FROM T_SYS_STAFF
+        <where>
+        <if test="queryUname!=null">
+            AND UNAME LIKE CONCAT('%', #{queryUname},'%')</if>
+        </where>ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <select id="getSysStaffListByMenu4Ctlgroup" parameterType="SysMenu" resultType="hashMap">
+        select IFNULL(COUNT(a.USERID),0) CNT,IFNULL(MAX(a.USERID),0) MAXID,IFNULL(MIN(a.USERID),0) MINID from
+        (SELECT * FROM T_SYS_STAFF
+        <where>
+        <if test="queryUname!=null">
+            AND UNAME LIKE CONCAT('%', #{queryUname},'%')</if>
+        )a
+        </where>
+    </select>
+
+
+</mapper>

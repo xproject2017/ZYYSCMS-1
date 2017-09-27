@@ -1,0 +1,93 @@
+.box {
+  width: 360px;
+  margin: 50px auto;
+  text-align: center; }
+
+.box .title span {
+  display: inline-block;
+  font-size: 20px;
+  color: #888;
+  font-weight: bold;
+  line-height: 30px;
+  cursor: pointer; }
+
+.box .title span:first-child {
+  margin-right: 80px; }
+
+.box .title span.current {
+  border-bottom: 3px solid #e2332a;
+  color: #e2332a; }
+
+.subbox {
+  margin-top: 50px; }
+
+.text, .phone-qrcode-text, .qrcode-text {
+  margin-top: 25px;
+  position: relative;
+  text-align: left; }
+
+.text input {
+  background: #fff;
+  width: 300px;
+  height: 50px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 20px 0 40px;
+  color: #888; }
+
+.text img {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 10px;
+  top: 15px; }
+
+.phone-qrcode-text input, .qrcode-text input {
+  background: #fff;
+  width: 40%;
+  height: 50px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 20px;
+  color: #888; }
+
+.qrcode-text img {
+  width: 45%;
+  margin-left: 10px;
+  background: #aaa;
+  float: right;
+  height: 50px; }
+
+.phone-qrcode-text button {
+  width: 45%;
+  margin-left: 10px;
+  background: #aaa;
+  float: right;
+  height: 50px;
+  border: none; }
+
+.submit-btn {
+  height: 50px;
+  width: 100%;
+  background: #e2332a;
+  color: #fff;
+  border: none;
+  margin-top: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer; }
+
+.forget {
+  text-align: center;
+  margin-top: 10px; }
+
+.forget a {
+  color: #e2332a; }

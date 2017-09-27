@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ZYYSCMS_WAR">
+    <output-path>$PROJECT_DIR$/out/artifacts/ZYYSCMS_WAR</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ZYYSCMS" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-dbcp2-2.0.1" />
+          <element id="library" level="project" name="mybatis" />
+          <element id="library" level="project" name="poi-3.13-20150929" />
+          <element id="library" level="project" name="slf4j" />
+          <element id="library" level="project" name="spring" />
+          <element id="library" level="project" name="json" />
+          <element id="library" level="project" name="thumbnailator-0.3" />
+          <element id="library" level="project" name="jackson" />
+          <element id="library" level="project" name="hamcrest-core-1.3" />
+          <element id="library" level="project" name="c3p0-0.9.1.2" />
+          <element id="library" level="project" name="commons" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="ZYYSCMS/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,123 @@
+body{overflow-x: hidden;min-width: 1300px;margin: 0;padding: 0;font-size: 14px;letter-spacing: 1px;color: #333;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;}
+.header{float:left;width: 100%;height: 95px;margin: 10px 0 0 0;padding: 0;}
+.header .base-reg{float: left;text-align: right;width: 96%;height: 55px;margin: 0;padding: 0;}
+.header a{text-decoration: none;color: #333;font-size: 12px;height: 40px;}
+.header a:hover{color: #f1b065;text-decoration: none;}
+.search-input{width:200px;height:35px;font-size: 12px;border-radius: 17px;border: 1px solid #ccc;background-image: none;background-color: #fff;padding:0 10px 0 10px;outline:none;margin: 0 0 0 40px;}
+.iconsearch{height: 30px;margin-left:-40px;background: #fff url(/image/searchicon.png) no-repeat;cursor:pointer;outline:none;border:0;background-size: 18px 18px;background-position: center;}
+.menu{float: left;width: 100%;height: 65px;}
+.header ul{list-style: none;height: 100%;float: left;position: relative;}
+.header li{width: 140px;float: left;position: relative;height: 65px;}
+.header ul>li>a{font-size: 18px;text-decoration: none;}
+
+#menulist{padding:10px 0 0 0;margin:0;}
+.nav-scroll{position: absolute;width: 120px;height:auto;z-index: 2;left: -10px;top:20px;text-align: center;display: none;}
+.nav-top{float: left;width: 100%;height: 10px;background: url(/image/nav-minpic.png) no-repeat;background-position: center;}
+.nav-secmen{float: left;width: 100%;height: auto;text-align: center;background-color: #000;}
+.nav-secmen > a{float: left;color: #fff;width: 100%;height: 35px;line-height: 35px;font-size: 14px;text-decoration: none;}
+.nav-secmen>a:hover{color: #f1b065;text-decoration: none;}
+.picloop{float: left;width: 100%;height: 440px;margin: 10px 0 0 0;}
+.picloop img{width: 100%;max-height: 440px;vertical-align: middle;cursor: pointer;}
+
+.hotproduct{float: left;width: 96%;padding: 0 2%;height: 240px;}
+.hot-data{float: left;width: 30%;height: 100%;padding: 1%;}
+.three-div{float: left;width: 100%;height: 40px;font-size: 12px;cursor: pointer;}
+.three-div a{text-decoration: none;color: #333;}
+.three-div a:hover{color: #333;}
+.first-div{float: left;width: 100%;height: 80px;font-size: 12px;cursor: pointer;}
+.other-div{float: left;width: 100%;height:30px;line-height: 30px;font-size: 12px;cursor: pointer;}
+.first-div p{width:auto;padding:0 0 0 2%;text-indent: 2em;/*overflow: hidden;text-overflow: ellipsis;white-space: nowrap;*/}
+.cooperative{float: left;width: 96%;padding: 0 2%;height: 70px;line-height: 70px;text-align: center;font-size: 16px;font-weight: bold;}
+.cooppic{float: left;width: 96%;padding: 0 2%;height: 150px;line-height: 150px;border: 1px solid #ccc;}
+.showmenu{float: left;width: 100%;background-color: #000;height: 300px;padding:20px 0 0 0;}
+.show-four{float: left;width: 25%;text-align: center;}
+.show-four a{width: 100%;float: left;color:#c1c1c1;height: 40px;line-height: 40px;text-decoration: none;}
+.show-four a:first-child{font-size: 16px;color: #fff;text-decoration: none;}
+.show-four a:hover{color: #fff;text-decoration: none;}
+
+
+/*******左侧菜单样式*******/
+.middle-context{width: 1300px;margin:0 auto;height: auto;padding:0;font-size: 14px;}
+.left-div{float: left;width: 200px;height: auto;padding-top: 25px;}
+.left-div ul{float:left;list-style: none;padding: 0;background-color: #f2f2f2;margin: 1px 0 0 0;width: 100%;}
+.left-div ul li{height: 55px;line-height: 55px;/*width: 175px;*/color: #666;padding:0 0 0 25px;border-bottom: 1px #e0e0e0 solid;}
+.left-div ul li>a{color:#666;text-decoration: none;float: left;width: 100%;}
+.left-div ul li:hover>a{color:#fff;text-decoration: none;}
+.left-div ul li:hover{color: #fff;background-color: #d72a2e;}
+.left-div ul li span{float: right;margin-right: 25px;}
+.left-div .activeA{color: #fff;background-color: #d72a2e;}
+.left-div .activeA>a{color:#Fff;}
+
+#title-menu{float: left;width: 100%;height: 70px;font-size:28px;color: #fff;box-sizing: border-box;line-height:70px;padding: 0 0 0 25px;background-color: #d72a2e;border: 1px solid #d72a2e;border-radius: 12px 5px 0 0;}
+.menu-bottom{float: left;width: 100%;height:40px;}
+
+/****右侧内容****/
+.right-div{float: left;width: 1040px;margin:0 20px;height: auto;padding-top: 25px;}
+.content-main-top{
+    float:left;width: 100%;height: 80px;border-bottom: 2px #e8e8e8 solid;
+}
+.right-content-main-title{
+    float:left;width:auto;min-width: 115px;height: 80px;line-height: 80px;font-size: 28px;border-bottom: 2px #d72a2e solid;
+}
+.content-main-nav{
+    width: auto;height: 80px;line-height: 80px;text-align: right;font-size: 12px;
+}
+
+.content-main-nav span{color: #d72a2e;}
+
+.content-main-nav a{text-decoration: none;color: #666;}
+.content-main-nav a:hover{text-decoration: none;color: #d72a2e;}
+
+.about-main{
+    float:left;margin: 10px 0 30px 0;width: 1040px;height: auto;overflow: hidden;
+}
+.add-btn{float: left;width: 100%;text-align: right;margin:0 0 10px 0;}
+.add-btn input[type='button']{background-color:#d72a2e;border: 0;color:#fff;min-width: 46px;width:125px;height: 45px;border-radius: 3px;font-size:16px;cursor:pointer;outline: none;}
+
+.mulpt-first{float: left;width: 1038px;height: 221px;border: 1px #e6e6e6 solid;margin:0 0 20px 0;cursor: pointer;}
+.mulpt-first .pic-div{float: left;width: 350px;height: 220px;}
+.mulpt-first .title-div{float: left;width: 686px;height: 50px;text-align: center;margin:50px 0 0 0;}
+.mulpt-first .elliptical-div{float: left;width: 686px;text-indent: 2em;}
+.mulpt-first .elliptical-div:hover{color: #d72a2e;}
+
+
+.mulpt-list{float: left;width: 1038px;height: 100px;border: 1px #e6e6e6 solid;margin:0 0 20px 0;}
+.mulpt-list .con-date{float:left;width: 85px;height: 100px;line-height:100px;text-align: center;border-right: 1px #e6e6e6 solid;font-size: 12px;color: #aaa;}
+.mulpt-list .con-news{float:left;width: 932px;height: 100px;padding:20px 0 0 20px;cursor: pointer;}
+.mulpt-list .con-mes{float:left;width: 912px;text-indent: 2em;/*overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: 60px;*/}
+.mulpt-list .con-news:hover{color: #d72a2e;}
+
+
+/**列表页面***/
+#callBackPagination{float: left;width: 100%;border: 1px solid #dedede;height:auto;background-color: #fff;}
+#callBackPager{float: left;text-align: center;width: 100%;height: 40px;margin-top: 5px;}
+.list-context{background-color: #fff;float: left;width: 100%;height: auto;}
+.list-title{float: left;width: 1038px;height: 40px;line-height:40px;border-bottom: 1px #e6e6e6 solid;padding:0 0 0 10px;}
+.cell-data{float: left;width: 33%;}
+
+
+/*cms登录样式*/
+.login-title{float:left;border-bottom: 1px #d72a2e solid;height: 54px;line-height: 54px;width:1160px;margin:0 70px;}
+.login-title h1{width: 100px;float: left;line-height: 55px;margin: 0 0 0 15px;color: #666;font-size: 20px;font-weight: bold;}
+.login-title a{width: 100px;line-height: 55px;float: right;text-align: right;color: #666;font-size: 14px;text-decoration: none;}
+.login-title a:hover{color: #d72a2e;text-decoration: none;}
+
+.login-content{float: left;height: 370px;width:400px;margin:30px 100px;padding:20px 0 0 0;}
+.login-content input[type='text'],.login-content input[type='password']{width:200px;height:35px;font-size: 12px;border-radius: 4px;border: 1px solid #ccc;background-image: none;background-color: #fff;padding:0 0 0 5px;}
+.login-content .cell{float:left;width: 100%;height:50px;line-height: 50px;margin:10px 0 10px 0;text-align: center;}
+.login-content #tips{float:left;width: 100%;height:50px;line-height: 50px;text-align: center;color:red;}
+label{float:left;width: 100px;}
+.cell span{color:red;}
+.login-content input[type='button']{background-color:#d72a2e;border: 0;color:#fff;min-width: 46px;width:125px;height: 45px;border-radius: 3px;font-size:16px;cursor:pointer;outline: none;}
+
+
+/** 新增咨询 **/
+.add-zx{float: left;width: 95%;height: 40px;line-height: 40px;padding:0 0 0 5%;}
+.add-zx span{color:red;}
+.add-zx input[type='text']{width:200px;height:35px;font-size: 12px;border-radius: 4px;border: 1px solid #ccc;background-image: none;background-color: #fff;padding:0 0 0 5px;outline: none;}
+
+.zx-div{float: left;width: 90%;height: auto;padding:0 5%;margin: 5px 0 10px 0;}
+
+.page-div{float: left;width: 95%;margin:50px 0 0 0;height: 40px;}
+.pre-next{float: left;width: 45%;padding:0 0 0 5%;height: 40px;line-height: 40px;}

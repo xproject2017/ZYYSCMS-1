@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiPmultiplemsgDao">
+    <select id="getBusiPmultiplemsg" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        select * from T_BUSI_PMULTIPLEMSG
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPmultiplemsgGroup" parameterType="BusiPmultiplemsg" resultType="hashMap">
+        select IFNULL(COUNT(MESGID),0) CNT,IFNULL(MAX(MESGID),0) MAXID,IFNULL(MIN(MESGID),0) MINID from T_BUSI_PMULTIPLEMSG
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPmultiplemsgList" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        select * from T_BUSI_PMULTIPLEMSG
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiPmultiplemsg" useGeneratedKeys="true" keyProperty="mesgid" parameterType="BusiPmultiplemsg">
+        INSERT INTO T_BUSI_PMULTIPLEMSG (MESGID,NAVIGATIONID1,NAVIGATIONID2,MBANNER,MMSGC,MTAGS,MTITLE,MES,ELLIPTICAL,CREATETIME,USERID,SAVETIME)
+        values(#{mesgid},#{navigationid1},#{navigationid2},#{mbanner},#{mmsgc},#{mtags},#{mtitle},#{mes},#{elliptical},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiPmultiplemsg" parameterType="BusiPmultiplemsg">
+        update T_BUSI_PMULTIPLEMSG
+        <set>
+             <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+            <if test="mbanner!=null">MBANNER=#{mbanner},</if>
+            <if test="mmsgc!=null">MMSGC=#{mmsgc},</if>
+            <if test="mtags!=null">MTAGS=#{mtags},</if>
+            <if test="mtitle!=null">MTITLE=#{mtitle},</if>
+            <if test="mes!=null">MES=#{mes},</if>
+            <if test="elliptical!=null">ELLIPTICAL=#{elliptical},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where MESGID=#{mesgid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiPmultiplemsg" parameterType="BusiPmultiplemsg">
+        delete from T_BUSI_PMULTIPLEMSG
+        where MESGID=#{mesgid}
+    </delete>
+
+
+    <select id="getBusiPmultiplemsgList4admin" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        SELECT a.* FROM(
+            SELECT * FROM T_BUSI_PMULTIPLEMSG WHERE MBANNER=1 UNION ALL
+            SELECT * FROM T_BUSI_PNES WHERE MBANNER=1 UNION ALL
+            SELECT * FROM T_BUSI_PNOTICE WHERE MBANNER=1 UNION ALL
+            SELECT * FROM T_BUSI_PPRODUCT WHERE MBANNER=1 UNION ALL
+            SELECT * FROM T_BUSI_PQUESTION WHERE MBANNER=1 UNION ALL
+            SELECT * FROM T_BUSI_RECRUIT WHERE MBANNER=1
+        )a
+        ORDER BY a.CREATETIME DESC
+    </select>
+    <select id="getBusiPmultiplemsgList4cms" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        SELECT a.* FROM(
+SELECT * FROM T_BUSI_PMULTIPLEMSG WHERE MBANNER=1 UNION ALL
+SELECT * FROM T_BUSI_PNES WHERE MBANNER=1 UNION ALL
+SELECT * FROM T_BUSI_PNOTICE WHERE MBANNER=1 UNION ALL
+SELECT * FROM T_BUSI_PPRODUCT WHERE MBANNER=1 UNION ALL
+SELECT * FROM T_BUSI_PQUESTION WHERE MBANNER=1 UNION ALL
+SELECT * FROM T_BUSI_RECRUIT WHERE MBANNER=1
+        )a
+        ORDER BY a.CREATETIME DESC
+       LIMIT 10
+    </select>
+
+    <select id="getBusiPmultiplemsgList4searchGroup" parameterType="BusiPmultiplemsg" resultType="hashMap">
+        SELECT IFNULL(COUNT(a.MESGID),0) CNT,IFNULL(MAX(a.MESGID),0) MAXID,IFNULL(MIN(a.MESGID),0) MINID FROM(
+SELECT * FROM T_BUSI_PMULTIPLEMSG WHERE MTAGS LIKE  CONCAT('%', #{mtags},'%') UNION ALL
+SELECT * FROM T_BUSI_PNES WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')  UNION ALL
+SELECT * FROM T_BUSI_PNOTICE WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+SELECT * FROM T_BUSI_PPRODUCT WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+SELECT * FROM T_BUSI_PQUESTION WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+SELECT * FROM T_BUSI_RECRUIT WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')
+        )a
+    </select>
+
+    <select id="getBusiPmultiplemsgList4search" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        SELECT a.* FROM(
+        SELECT * FROM T_BUSI_PMULTIPLEMSG WHERE MTAGS LIKE  CONCAT('%', #{mtags},'%') UNION ALL
+        SELECT * FROM T_BUSI_PNES WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')  UNION ALL
+        SELECT * FROM T_BUSI_PNOTICE WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+        SELECT * FROM T_BUSI_PPRODUCT WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+        SELECT * FROM T_BUSI_PQUESTION WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')   UNION ALL
+        SELECT * FROM T_BUSI_RECRUIT WHERE MTAGS LIKE CONCAT('%', #{mtags},'%')
+        )a
+        ORDER BY a.CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if>
+    </select>
+
+    <!--前一条 后一条-->
+    <select id="getBusiPmultiplemsgList4Next" parameterType="BusiPmultiplemsg" resultType="BusiPmultiplemsg">
+        <![CDATA[
+        SELECT MESGID,NAVIGATIONID1,NAVIGATIONID2,MTITLE
+        FROM T_BUSI_PMULTIPLEMSG
+        WHERE    MESGID IN(
+        SELECT MIN(MESGID) MESGID FROM T_BUSI_PMULTIPLEMSG    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND MESGID>#{mesgid}
+        UNION ALL
+        SELECT MAX(MESGID) MESGID FROM T_BUSI_PMULTIPLEMSG    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND MESGID<#{mesgid}
+        )
+         ]]>
+    </select>
+</mapper>

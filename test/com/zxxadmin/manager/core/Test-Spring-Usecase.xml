@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:Test-Spring-Config.xml"/>
+    <!--<import resource="Test-Spring-UsersCase.xml"/>-->
+
+    <!--账户管理 -->
+    <bean id="sysStaffDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysStaffDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysMenuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysMenuDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysRoleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysRoleDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysRolemenusDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysRolemenusDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="sysSessionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.cms.core.dao.system.SysSessionDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+
+    <bean id="busiOnscreeninfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.screen.BusiOnscreeninfoDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="busiScreeninfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.screen.BusiScreeninfoDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="busiScreenStatsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.zxxadmin.dao.screen.BusiScreenStatsDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+
+    <bean id="sysRoleManagerImp" class="com.cms.core.manager.admin.core.system.SysRoleManagerImp">
+    </bean>
+
+    <bean id="sysMenuManagerImp" class="com.cms.core.manager.admin.core.system.SysMenuManagerImp">
+    </bean>
+
+
+    <bean id="busiCcatagory" class="com.zxxadmin.manager.checknetwork.core.catagory.BusiCcatagoryManagerImp">
+    </bean>
+
+    <bean id="busiCheckdeptManager" class="com.zxxadmin.manager.checknetwork.core.dept.BusiCheckdeptManagerImp">
+    </bean>
+
+    <bean id="screenManagerImp" class="com.zxxadmin.manager.screen.core.screen.ScreenManagerImp">
+    </bean>
+</beans>
