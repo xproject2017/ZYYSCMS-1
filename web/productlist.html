@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+	<title>中驿源晟</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/productlist.css">
+	<style type="text/css"></style>
+</head>
+<body>
+	<div class="header" id="header">
+	<div class="center">
+		<a href="index.html"><img class="logo" src="images/logo.png" title="logo"></a>
+		<ul class="headernav">
+			<li v-for="n in navDatas">
+				<a href="#">{{n.name}}</a>
+				<ul v-if="n.data">
+					<li v-for="s in n.data">
+						<a v-bind:href="s.url">{{s.name}}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="searchbox">
+			<div class="searchtext">
+				<input type="text" name="search" placeholder="输入您想要搜索的内容">
+				<img src="">
+			</div>
+			<a href="login.html"><input type="button" id="login" value="登录"></a>
+			<a href="login.html?regist"><input type="button" id="regist" value="注册"></a>
+		</div>
+	</div>
+</div>
+	<div class="banner" id="banner">
+	<div class="slide">
+		<ul class="slide-box">
+			<li v-for="b in bannerDatas" v-bind:style="'background: url('+b.url+') center'"></li>
+		</ul>
+		<ul class="slide-btn" v-bind:style="'marginLeft:-'+bannerDatas.length*45/2+'px'">
+			<li v-for="(i,index) in bannerDatas" v-bind:class="index==0 ? 'slide-btn-active': ''"></li>
+		</ul>
+	</div>
+</div>
+	<div class="container" id="app">
+		<div class="center">
+			<div class="containleft">
+				<h1>产品信息</h1>
+				<h2 v-on:click="click1('cpjs',$event)">产品介绍</h2>
+				<ul class="leftnav1">
+					<li v-for="n in leftnavDatas"><img src="images/icon-arrow-right.png"><a url="#">{{n.name}}</a>
+						<ul class="leftnav2" v-if="n.data">
+							<li v-for="i in n.data" v-on:click="click2('cpjs',$event)"><a v-bind:url="i.url">{{i.name}}</a></li>
+						</ul>
+					</li>
+				</ul>
+				<h2 v-on:click="click1('cgfa',$event)">成功方案</h2>
+				<ul class="leftnav1">
+					<li v-for="n in leftnavDatas"><img src="images/icon-arrow-right.png"><a url="#">{{n.name}}</a>
+						<ul class="leftnav2" v-if="n.data">
+							<li v-for="i in n.data" v-on:click="click2('cgfa',$event)"><a v-bind:url="i.url">{{i.name}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="containright">
+				<ul id="cpjs" class="articles" v-if="nowModal == 'cpjs' && cpjsDatas.length > 0">
+					<li v-for="d in cpjsDatas">
+						<img v-bind:src="d.img">
+						<div class="art">
+							<h3 v-on:click="detailClick('cpjs',d.id,$event)">{{d.title}}</h3>
+							<p>{{d.content}}</p>
+						</div>
+					</li>
+				</ul>
+				<div id="cpjsdetail" class="detail">
+					<img src="images/1.jpg" alt="" class="detailimg">
+					<h2>{{cpjsdetail.title}}</h2>
+					<p>{{cpjsdetail.content}}</p>
+				</div>
+				<ul id="cgfa" class="articles" v-if="nowModal == 'cgfa' && cgfaDatas.length > 0">
+					<li v-for="d in cgfaDatas">
+						<img v-bind:src="d.img">
+						<div class="art">
+							<h3 v-on:click="detailClick('cgfa',$event)">{{d.title}}</h3>
+							<p>{{d.content}}</p>
+						</div>
+					</li>
+				</ul>
+				<div id="cgfadetail" class="detail">
+					<img src="images/2.jpg" alt="" class="detailimg">
+					<h2>{{cgfadetail.title}}</h2>
+					<p>{{cgfadetail.content}}</p>
+				</div>
+				<ul class="page" v-if="pageNum > 0">
+					<li><</li>
+					<li v-for="num in (pageNum)">{{num}}</li>
+					<li>></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="footer" id="footer">
+	<div class="center">
+		<span class="left">
+			<span class="bl">CopyRight©2016 zyyscn.cn All right reserved 中驿源晟投资管理(杭州)有限公司 版权所有</span>
+			<span class="bb">浙ICP备16029552号</span>
+		</span>
+		<span class="right">
+			服务热线：4009199043
+		</span>
+	</div>
+</div>
+	<script src="js/plugins/vue.min.js" type="application/javascript"></script>
+	<script src="js/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/common/common-data.js"></script>
+	<script src="js/productlist.js"></script>
+	<script src="js/common/common-display.js"></script>
+	<script type="text/javascript" src="js/plugins/jqPaginator.js"></script>
+	<script type="text/javascript">
+		$(function () {
+            $(".page").jqPaginator({
+                totalCounts: 100,
+                pageSize: 5,
+                visiblePages: 5,
+                currentPage: 1,
+                activeClass:'active',
+                first: '<li><a href="javascript:void(0);"><<</a></li>',
+                prev: '<li><a href="javascript:void(0);"><</a></li>',
+                next: '<li><a href="javascript:void(0);">></a></li>',
+                last: '<li><a href="javascript:void(0);">>></a></li>',
+                page: '<li><a href="javascript:void(0);">{{page}}</a></li>',
+                onPageChange: function (num) {
+			        // alert('当前第' + num + '页');
+			    }
+            });
+        })
+	</script>
+</body>
+</html>

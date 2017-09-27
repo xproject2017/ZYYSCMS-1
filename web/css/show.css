@@ -1,0 +1,13 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;}
+body{margin: 0;padding: 0;  }
+#main{margin:0 auto;width: 2048px;height: 768px;padding: 0;background-image: url("/image/display.jpg");background-repeat: no-repeat;background-size: 2048px 768px;}
+.left,.middlemain,.right{float: left}
+.left,.right{width: 499px;}
+.left{border-right: 1px solid #898989}
+.right{border-left: 1px solid #898989}
+.firstmain,.thirdmain{border-bottom: 1px solid #898989 }
+.middlemain{width: 1050px;height: 768px;}
+.firstmain,.secondmain,.thirdmain,.fourmain{width: 498px;height: 384px;}

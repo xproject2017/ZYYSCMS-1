@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.system.SysSessionDao">
+    <select id="getSysSession" parameterType="SysSession" resultType="SysSession">
+        select * from T_SYS_SESSION
+        <where>
+            <if test="sessionid!=null">
+                SESSIONID=#{sessionid}</if>
+            <if test="sessiontoken!=null">
+                AND SESSIONTOKEN=#{sessiontoken}</if>
+            <if test="lasttime!=null">
+                AND LASTTIME=#{lasttime}</if>
+            <if test="status!=null">
+                AND STATUS=#{status}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+
+    <select id="getSysSessionGroup" parameterType="SysSession" resultType="hashMap">
+        select IFNULL(COUNT(SESSIONID),0) CNT,IFNULL(MAX(SESSIONID),0) MAXID,IFNULL(MIN(SESSIONID),0) MINID from T_SYS_SESSION
+        <where>
+            <if test="sessionid!=null">
+                SESSIONID=#{sessionid}</if>
+            <if test="sessiontoken!=null">
+                AND SESSIONTOKEN=#{sessiontoken}</if>
+            <if test="lasttime!=null">
+                AND LASTTIME=#{lasttime}</if>
+            <if test="status!=null">
+                AND STATUS=#{status}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+
+    <select id="getSysSessionList" parameterType="SysSession" resultType="SysSession">
+        select * from T_SYS_SESSION
+        <where>
+            <if test="sessionid!=null">
+                SESSIONID=#{sessionid}</if>
+            <if test="lasttime!=null">
+                AND LASTTIME=#{lasttime}</if>
+            <if test="status!=null">
+                AND STATUS=#{status}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY SESSIONID DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+
+    <insert id="addSysSession" useGeneratedKeys="true" keyProperty="sessionid" parameterType="SysSession">
+        INSERT INTO T_SYS_SESSION (SESSIONID,SESSIONTOKEN,LASTTIME,STATUS,USERID)
+        values(#{sessionid},#{sessiontoken},NOW(),#{status},#{userid})
+    </insert>
+
+
+    <update id="updateSysSession" parameterType="SysSession">
+        update T_SYS_SESSION
+        <set>
+            <if test="sessiontoken!=null">SESSIONTOKEN=#{sessiontoken},</if>
+            <if test="lasttime!=null">LASTTIME=#{lasttime},</if>
+            <if test="status!=null">STATUS=#{status},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+        </set>
+        where SESSIONID=#{sessionid}
+    </update>
+
+
+    <delete id="deleteSysSession" parameterType="SysSession">
+        delete from T_SYS_SESSION  where SESSIONID=#{sessionid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="checkSysSession" propagation="REQUIRED"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="allManagerMethod" expression="execution(* com.cms.core.manager.*.core.*.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod"/>
+    </aop:config>
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/dburl"/>
+    </bean>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:/com/cms/core/mapper/*/*.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.cms.core.dao"/>
+    </bean>
+
+    <!--<context:property-placeholder location="/WEB-INF/*.properties" />-->
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.nicchagil.mybatis3spring3intg.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>-->
+    <!--<mybatis:scan base-package="com.cloutech.dao"/>-->
+    <bean id="dictUtil" class="com.cms.util.DictUtils" scope="singleton">
+        <property name="dictsCache">
+            <map key-type="java.lang.String" value-type="java.util.List">
+                <entry key="10001">
+                    <list>
+                        <ref bean="anual_planType"/>
+                        <ref bean="special_planType"/>
+                    </list>
+                </entry>
+                <entry key="10002">
+                    <list>
+                        <ref bean="in_tradeType"/>
+                        <ref bean="out_planType"/>
+                    </list>
+                </entry>
+                <entry key="10003">
+                    <list>
+                        <ref bean="admin_roleids"/>
+                        <ref bean="center_roleids"/>
+                        <ref bean="manager_roleids"/>
+                        <ref bean="org_roleids"/>
+                    </list>
+                </entry>
+             </map>
+        </property>
+    </bean>
+    <!-- Util -->
+    <bean id="tagtypeBean" class="com.cms.core.bean.util.TagTypeBean"/>
+    <bean id="anual_planType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="年度计划"/>
+    </bean>
+    <bean id="special_planType" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="专项计划"/>
+    </bean>
+    <bean id="in_tradeType" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="进口"/>
+    </bean>
+    <bean id="out_planType" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="出口"/>
+    </bean>
+
+    <bean id="admin_roleids" parent="tagtypeBean">
+        <property name="value" value="1"/>
+        <property name="tagname" value="admin"/>
+    </bean>
+    <bean id="center_roleids" parent="tagtypeBean">
+        <property name="value" value="2"/>
+        <property name="tagname" value="监测中心"/>
+    </bean>
+    <bean id="manager_roleids" parent="tagtypeBean">
+        <property name="value" value="3"/>
+        <property name="tagname" value="行政管理"/>
+    </bean>
+    <bean id="org_roleids" parent="tagtypeBean">
+        <property name="value" value="4"/>
+        <property name="tagname" value="检测机构"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiTestpapervipDao">
+
+    <select id="getBusiTestpapervip" parameterType="BusiTestpapervip" resultType="BusiTestpapervip">
+        select * from T_BUSI_TESTPAPERVIP
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="score!=null">
+                AND SCORE=#{score}</if>
+            <if test="tinfo!=null">
+                AND TINFO=#{tinfo}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestpapervipGroup" parameterType="BusiTestpapervip" resultType="hashMap">
+        select IFNULL(COUNT(ID),0) CNT,IFNULL(MAX(ID),0) MAXID,IFNULL(MIN(ID),0) MINID from T_BUSI_TESTPAPERVIP
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="score!=null">
+                AND SCORE=#{score}</if>
+            <if test="tinfo!=null">
+                AND TINFO=#{tinfo}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestpapervipList" parameterType="BusiTestpapervip" resultType="BusiTestpapervip">
+        select * from T_BUSI_TESTPAPERVIP
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="score!=null">
+                AND SCORE=#{score}</if>
+            <if test="tinfo!=null">
+                AND TINFO=#{tinfo}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiTestpapervip" useGeneratedKeys="true" keyProperty="id" parameterType="BusiTestpapervip">
+        INSERT INTO T_BUSI_TESTPAPERVIP (ID,TID,VIPID,SCORE,TINFO,CREATETIME,USERID,SAVETIME)
+        values(#{id},#{tid},#{vipid},#{score},#{tinfo},NOW(),#{userid},NOW())
+    </insert>
+    <update id="updateBusiTestpapervip" parameterType="BusiTestpapervip">
+        update T_BUSI_TESTPAPERVIP
+        <set>
+            <if test="id!=null">ID=#{id},</if>
+            <if test="tid!=null">TID=#{tid},</if>
+            <if test="vipid!=null">VIPID=#{vipid},</if>
+            <if test="score!=null">SCORE=#{score},</if>
+            <if test="tinfo!=null">TINFO=#{tinfo},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where primarykey = #{id}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiTestpapervip" parameterType="BusiTestpapervip">
+        delete from T_BUSI_TESTPAPERVIP
+        where primarykey = #{id} AND SAVETIME=#{savetime}
+    </delete>
+
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiTestexerciseDao">
+    <select id="getBusiTestexercise" parameterType="BusiTestexercise" resultType="BusiTestexercise">
+        select * from t_busi_testexercise
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="eid!=null">
+                AND EID=#{eid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestexerciseGroup" parameterType="BusiTestexercise" resultType="hashMap">
+        select IFNULL(COUNT(ID),0) CNT,IFNULL(MAX(ID),0) MAXID,IFNULL(MIN(ID),0) MINID from t_busi_testexercise
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="eid!=null">
+                AND EID=#{eid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiTestexerciseList" parameterType="BusiTestexercise" resultType="BusiTestexercise">
+        select * from t_busi_testexercise
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="tid!=null">
+                AND TID=#{tid}</if>
+            <if test="eid!=null">
+                AND EID=#{eid}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiTestexercise" useGeneratedKeys="true" keyProperty="id" parameterType="BusiTestexercise">
+        INSERT INTO t_busi_testexercise (ID,TID,EID,CREATETIME,USERID,SAVETIME)
+        values(#{id},#{tid},#{eid},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiTestexercise" parameterType="BusiTestexercise">
+        update t_busi_testexercise
+        <set>
+            <if test="id!=null">ID=#{id},</if>
+            <if test="tid!=null">TID=#{tid},</if>
+            <if test="eid!=null">EID=#{eid},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where id = #{id}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiTestexercise" parameterType="BusiTestexercise">
+        delete from t_busi_testexercise
+        where eid = #{eid}
+        and tid= #{tid}
+    </delete>
+
+
+</mapper>

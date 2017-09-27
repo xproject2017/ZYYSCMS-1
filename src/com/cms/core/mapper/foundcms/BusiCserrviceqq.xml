@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiCserrviceqqDao">
+    <select id="getBusiCserrviceqq" parameterType="BusiCserrviceqq" resultType="BusiCserrviceqq">
+        select * from T_BUSI_CSERRVICEQQ
+        <where>
+            <if test="id!=null">
+                ID=#{id}</if>
+            <if test="qq!=null">
+                AND QQ=#{qq}</if>
+            <if test="cname!=null">
+                AND CNAME=#{cname}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiCserrviceqqGroup" parameterType="BusiCserrviceqq" resultType="hashMap">
+    select IFNULL(COUNT(ID),0) CNT,IFNULL(MAX(ID),0) MAXID,IFNULL(MIN(ID),0) MINID from T_BUSI_CSERRVICEQQ
+    <where>
+        <if test="id!=null">
+            ID=#{id}</if>
+        <if test="qq!=null">
+            AND QQ=#{qq}</if>
+        <if test="cname!=null">
+            AND CNAME=#{cname}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+
+    </where>
+    </select>
+
+    <select id="getBusiCserrviceqqList" parameterType="BusiCserrviceqq" resultType="BusiCserrviceqq">
+    select * from T_BUSI_CSERRVICEQQ
+    <where>
+        <if test="id!=null">
+            ID=#{id}</if>
+        <if test="qq!=null">
+            AND QQ=#{qq}</if>
+        <if test="cname!=null">
+            AND CNAME=#{cname}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+    </where> ORDER BY CREATETIME DESC
+    <if test="currentPage!=null and pageSize!=null">
+        <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+    </if></select>
+
+    <insert id="addBusiCserrviceqq" useGeneratedKeys="true" keyProperty="id" parameterType="BusiCserrviceqq">
+    INSERT INTO T_BUSI_CSERRVICEQQ (ID,QQ,CNAME,CREATETIME,USERID,SAVETIME)
+    values(#{id},#{qq},#{cname},NOW(),#{userid},NOW())
+    </insert>
+    <update id="updateBusiCserrviceqq" parameterType="BusiCserrviceqq">
+    update T_BUSI_CSERRVICEQQ
+    <set>
+        <if test="id!=null">ID=#{id},</if>
+        <if test="qq!=null">QQ=#{qq},</if>
+        <if test="cname!=null">CNAME=#{cname},</if>
+        <if test="userid!=null">USERID=#{userid},</if>
+        <if test="1==1">SAVETIME=NOW(),</if>
+    </set>
+    where id = #{id}
+    AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiCserrviceqq" parameterType="BusiCserrviceqq">
+    delete from T_BUSI_CSERRVICEQQ
+    where id = #{id}
+    </delete>
+ </mapper>

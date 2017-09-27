@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiPproductcaseDao">
+
+    <select id="getBusiPproductcase" parameterType="BusiPproductcase" resultType="BusiPproductcase">
+    select * from T_BUSI_PPRODUCTCASE
+    <where>
+        <if test="mesgid!=null">
+            MESGID=#{mesgid}</if>
+        <if test="navigationid1!=null">
+            AND NAVIGATIONID1=#{navigationid1}</if>
+        <if test="navigationid2!=null">
+            AND NAVIGATIONID2=#{navigationid2}</if>
+        <if test="mbanner!=null">
+            AND MBANNER=#{mbanner}</if>
+        <if test="projectname!=null">
+            AND PROJECTNAME=#{projectname}</if>
+        <if test="catagory!=null">
+            AND CATAGORY=#{catagory}</if>
+        <if test="mmsgc!=null">
+            AND MMSGC=#{mmsgc}</if>
+        <if test="mtags!=null">
+            AND MTAGS=#{mtags}</if>
+        <if test="mtitle!=null">
+            AND MTITLE=#{mtitle}</if>
+        <if test="mes!=null">
+            AND MES=#{mes}</if>
+        <if test="elliptical!=null">
+            AND ELLIPTICAL=#{elliptical}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+
+    </where>
+    </select>
+
+    <select id="getBusiPproductcaseGroup" parameterType="BusiPproductcase" resultType="hashMap">
+    select IFNULL(COUNT(mesgid),0) CNT,IFNULL(MAX(mesgid),0) MAXID,IFNULL(MIN(mesgid),0) MINID from T_BUSI_PPRODUCTCASE
+    <where>
+        <if test="mesgid!=null">
+            MESGID=#{mesgid}</if>
+        <if test="navigationid1!=null">
+            AND NAVIGATIONID1=#{navigationid1}</if>
+        <if test="navigationid2!=null">
+            AND NAVIGATIONID2=#{navigationid2}</if>
+        <if test="mbanner!=null">
+            AND MBANNER=#{mbanner}</if>
+        <if test="projectname!=null">
+            AND PROJECTNAME=#{projectname}</if>
+        <if test="catagory!=null">
+            AND CATAGORY=#{catagory}</if>
+        <if test="mmsgc!=null">
+            AND MMSGC=#{mmsgc}</if>
+        <if test="mtags!=null">
+            AND MTAGS=#{mtags}</if>
+        <if test="mtitle!=null">
+            AND MTITLE=#{mtitle}</if>
+        <if test="mes!=null">
+            AND MES=#{mes}</if>
+        <if test="elliptical!=null">
+            AND ELLIPTICAL=#{elliptical}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+
+    </where>
+    </select>
+
+    <select id="getBusiPproductcaseList" parameterType="BusiPproductcase" resultType="BusiPproductcase">
+    select * from T_BUSI_PPRODUCTCASE
+    <where>
+        <if test="mesgid!=null">
+            MESGID=#{mesgid}</if>
+        <if test="navigationid1!=null">
+            AND NAVIGATIONID1=#{navigationid1}</if>
+        <if test="navigationid2!=null">
+            AND NAVIGATIONID2=#{navigationid2}</if>
+        <if test="mbanner!=null">
+            AND MBANNER=#{mbanner}</if>
+        <if test="projectname!=null">
+            AND PROJECTNAME=#{projectname}</if>
+        <if test="catagory!=null">
+            AND CATAGORY=#{catagory}</if>
+        <if test="mmsgc!=null">
+            AND MMSGC=#{mmsgc}</if>
+        <if test="mtags!=null">
+            AND MTAGS=#{mtags}</if>
+        <if test="mtitle!=null">
+            AND MTITLE=#{mtitle}</if>
+        <if test="mes!=null">
+            AND MES=#{mes}</if>
+        <if test="elliptical!=null">
+            AND ELLIPTICAL=#{elliptical}</if>
+        <if test="createtime!=null">
+            AND CREATETIME>=#{createtime}</if>
+        <if test="userid!=null">
+            AND USERID=#{userid}</if>
+    </where> ORDER BY CREATETIME DESC
+    <if test="currentPage!=null and pageSize!=null">
+        <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+    </if></select>
+
+    <insert id="addBusiPproductcase" useGeneratedKeys="true" keyProperty="mesgid" parameterType="BusiPproductcase">
+    INSERT INTO T_BUSI_PPRODUCTCASE (MESGID,NAVIGATIONID1,NAVIGATIONID2,MBANNER,PROJECTNAME,CATAGORY,MMSGC,MTAGS,MTITLE,MES,ELLIPTICAL,CREATETIME,USERID,SAVETIME)
+    values(#{mesgid},#{navigationid1},#{navigationid2},#{mbanner},#{projectname},#{catagory},#{mmsgc},#{mtags},#{mtitle},#{mes},#{elliptical},NOW(),#{userid},NOW())
+    </insert>
+    <update id="updateBusiPproductcase" parameterType="BusiPproductcase">
+    update T_BUSI_PPRODUCTCASE
+    <set>
+        <if test="mesgid!=null">MESGID=#{mesgid},</if>
+        <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+        <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+        <if test="mbanner!=null">MBANNER=#{mbanner},</if>
+        <if test="projectname!=null">PROJECTNAME=#{projectname},</if>
+        <if test="catagory!=null">CATAGORY=#{catagory},</if>
+        <if test="mmsgc!=null">MMSGC=#{mmsgc},</if>
+        <if test="mtags!=null">MTAGS=#{mtags},</if>
+        <if test="mtitle!=null">MTITLE=#{mtitle},</if>
+        <if test="mes!=null">MES=#{mes},</if>
+        <if test="elliptical!=null">ELLIPTICAL=#{elliptical},</if>
+        <if test="userid!=null">USERID=#{userid},</if>
+        <if test="1==1">SAVETIME=NOW(),</if>
+    </set>
+    where MESGID = #{mesgid}
+    AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiPproductcase" parameterType="BusiPproductcase">
+    delete from T_BUSI_PPRODUCTCASE
+    where MESGID = #{mesgid}
+    </delete>
+
+
+</mapper>

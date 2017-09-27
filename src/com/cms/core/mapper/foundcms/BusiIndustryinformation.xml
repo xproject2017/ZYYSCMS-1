@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiIndustryinformationDao">
+    <select id="getBusiIndustryinformation" parameterType="BusiIndustryinformation" resultType="BusiIndustryinformation">
+        select * from T_BUSI_INDUSTRYINFORMATION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiIndustryinformationGroup" parameterType="BusiIndustryinformation" resultType="hashMap">
+        select IFNULL(COUNT(MESGID),0) CNT,IFNULL(MAX(MESGID),0) MAXID,IFNULL(MIN(MESGID),0) MINID from T_BUSI_INDUSTRYINFORMATION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiIndustryinformationList" parameterType="BusiIndustryinformation" resultType="BusiIndustryinformation">
+        select * from T_BUSI_INDUSTRYINFORMATION
+        <where>
+            <if test="mesgid!=null">
+                MESGID=#{mesgid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mbanner!=null">
+                AND MBANNER=#{mbanner}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="mmsgc!=null">
+                AND MMSGC=#{mmsgc}</if>
+            <if test="mtags!=null">
+                AND MTAGS=#{mtags}</if>
+            <if test="mtitle!=null">
+                AND MTITLE=#{mtitle}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="elliptical!=null">
+                AND ELLIPTICAL=#{elliptical}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiIndustryinformation" useGeneratedKeys="true" keyProperty="mesgid" parameterType="BusiIndustryinformation">
+        INSERT INTO T_BUSI_INDUSTRYINFORMATION (MESGID,NAVIGATIONID1,NAVIGATIONID2,MBANNER,MTYPE,MMSGC,MTAGS,MTITLE,MES,ELLIPTICAL,CREATETIME,USERID,SAVETIME)
+        values(#{mesgid},#{navigationid1},#{navigationid2},#{mbanner},#{mtype},#{mmsgc},#{mtags},#{mtitle},#{mes},#{elliptical},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiIndustryinformation" parameterType="BusiIndustryinformation">
+        update T_BUSI_INDUSTRYINFORMATION
+        <set>
+            <if test="mesgid!=null">MESGID=#{mesgid},</if>
+            <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+            <if test="mbanner!=null">MBANNER=#{mbanner},</if>
+            <if test="mtype!=null">MTYPE=#{mtype},</if>
+            <if test="mmsgc!=null">MMSGC=#{mmsgc},</if>
+            <if test="mtags!=null">MTAGS=#{mtags},</if>
+            <if test="mtitle!=null">MTITLE=#{mtitle},</if>
+            <if test="mes!=null">MES=#{mes},</if>
+            <if test="elliptical!=null">ELLIPTICAL=#{elliptical},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where mesgid = #{mesgid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiIndustryinformation" parameterType="BusiIndustryinformation">
+        delete from T_BUSI_INDUSTRYINFORMATION
+        where mesgid = #{mesgid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiPconsultationDao">
+    <select id="getBusiPconsultation" parameterType="BusiPconsultation" resultType="BusiPconsultation">
+        select * from T_BUSI_PCONSULTATION
+        <where>
+            <if test="consid!=null">
+                CONSID=#{consid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="constime!=null">
+                AND CONSTIME=#{constime}</if>
+            <if test="consphone!=null">
+                AND CONSPHONE=#{consphone}</if>
+            <if test="consname!=null">
+                AND CONSNAME=#{consname}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPconsultationGroup" parameterType="BusiPconsultation" resultType="hashMap">
+        select IFNULL(COUNT(CONSID),0) CNT,IFNULL(MAX(CONSID),0) MAXID,IFNULL(MIN(CONSID),0) MINID from T_BUSI_PCONSULTATION
+        <where>
+            <if test="consid!=null">
+                CONSID=#{consid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="constime!=null">
+                AND CONSTIME=#{constime}</if>
+            <if test="consphone!=null">
+                AND CONSPHONE=#{consphone}</if>
+            <if test="consname!=null">
+                AND CONSNAME=#{consname}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiPconsultationList" parameterType="BusiPconsultation" resultType="BusiPconsultation">
+        select * from T_BUSI_PCONSULTATION
+        <where>
+            <if test="consid!=null">
+                CONSID=#{consid}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+            <if test="mes!=null">
+                AND MES=#{mes}</if>
+            <if test="constime!=null">
+                AND CONSTIME=#{constime}</if>
+            <if test="consphone!=null">
+                AND CONSPHONE=#{consphone}</if>
+            <if test="consname!=null">
+                AND CONSNAME=#{consname}</if>
+            <if test="vipid!=null">
+                AND VIPID=#{vipid}</if>
+            <if test="flag!=null">
+                AND FLAG=#{flag}</if>
+            <if test="resmes!=null">
+                AND RESMES=#{resmes}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+            <if test="userid!=null">
+                AND USERID=#{userid}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiPconsultation" useGeneratedKeys="true" keyProperty="consid" parameterType="BusiPconsultation">
+        INSERT INTO T_BUSI_PCONSULTATION (CONSID,NAVIGATIONID1,NAVIGATIONID2,MES,CONSTIME,CONSPHONE,CONSNAME,VIPID,FLAG,RESMES,CREATETIME,USERID,SAVETIME)
+        values(#{consid},#{navigationid1},#{navigationid2},#{mes},#{constime},#{consphone},#{consname},#{vipid},#{flag},#{resmes},NOW(),#{userid},NOW())
+    </insert>
+
+    <update id="updateBusiPconsultation" parameterType="BusiPconsultation">
+        update T_BUSI_PCONSULTATION
+        <set>
+            <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+            <if test="mes!=null">MES=#{mes},</if>
+            <if test="constime!=null">CONSTIME=#{constime},</if>
+            <if test="consphone!=null">CONSPHONE=#{consphone},</if>
+            <if test="consname!=null">CONSNAME=#{consname},</if>
+            <if test="vipid!=null">VIPID=#{vipid},</if>
+            <if test="flag!=null">FLAG=#{flag},</if>
+            <if test="resmes!=null">RESMES=#{resmes},</if>
+            <if test="userid!=null">USERID=#{userid},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where CONSID=#{consid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiPconsultation" parameterType="BusiPconsultation">
+        delete from T_BUSI_PCONSULTATION
+        where CONSID=#{consid}
+    </delete>
+
+    <!--前一条 后一条-->
+    <select id="getBusiPconsultationList4Next" parameterType="BusiPconsultation" resultType="BusiPconsultation">
+        <![CDATA[
+        SELECT CONSID,NAVIGATIONID1,NAVIGATIONID2,CONSNAME
+        FROM T_BUSI_PCONSULTATION
+        WHERE    CONSID IN(
+        SELECT MIN(CONSID) CONSID FROM T_BUSI_PCONSULTATION    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND CONSID>#{consid}
+        UNION ALL
+        SELECT MAX(CONSID) CONSID FROM T_BUSI_PCONSULTATION    WHERE  NAVIGATIONID1=#{navigationid1} AND NAVIGATIONID2=#{navigationid2} AND CONSID<#{consid}
+        )
+         ]]>
+    </select>
+
+</mapper>

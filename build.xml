@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="FoundCMS" basedir="."  default="export">
+    <!-- config -->
+    <property name="lib.dir" value="D:/CA/javalib"/>
+    <property name="build.dir" location="build"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="compile.debug" value="true"/>
+    <property name="compile.deprecation" value="false"/>
+    <property name="compile.optimize" value="false"/>
+    <!-- lib config -->
+    <path id="compile.classpath">
+	     <fileset dir="${lib.dir}/javaee5"><include name="javaee.jar"/>  </fileset>
+        <fileset dir="${lib.dir}/c3p0"> <include name="*.jar"/>   </fileset>
+        <fileset dir="${lib.dir}/log4j"><include name="log4j-1.2.17.jar"/>     </fileset>
+        <fileset dir="${lib.dir}/commons-dbcp2"><include name="commons-dbcp2-2.0.1.jar"/>    </fileset>
+        <fileset dir="${lib.dir}/commons-dbcp2"><include name="commons-pool2-2.2.jar"/>      </fileset>
+        <fileset dir="${lib.dir}/mysql-connect"> <include name="mysql-connector-java-5.1.33-bin.jar"/>       </fileset>
+        <fileset dir="${lib.dir}/mybatis-3.2.2"><include name="*.jar"/> </fileset>
+        <fileset dir="${lib.dir}/mybatis-3.2.2/lib"><include name="*.jar"/>      </fileset>
+        <fileset dir="${lib.dir}/jackson1.9.11"><include name="*.jar"/>    </fileset>
+        <fileset dir="${lib.dir}/sysdataweb/json"><include name="*.jar"/>       </fileset>
+        <fileset dir="${lib.dir}/sysdataweb/mybatis"><include name="*.jar"/>  </fileset>
+        <fileset dir="${lib.dir}/sysdataweb/slf4j"><include name="*.jar"/>       </fileset>
+        <fileset dir="${lib.dir}/sysdataweb/spring"><include name="*.jar"/>    </fileset>
+        <fileset dir="${lib.dir}/poi-3.13"><include name="*.jar"/> </fileset>
+        <fileset dir="${lib.dir}/poi-3.13/ooxml-lib"><include name="xmlbeans-2.6.0.jar"/>
+        </fileset>
+    </path>
+    <!-- 初始化任务 -->
+    <target name="init">
+        <!-- 输出标签 ，${init}是builds.properties中的属性 -->
+        <echo message="  Available Targets:"/>
+        <echo message="-------------------------------------------------------"/>
+        <echo message="  init ${dist.dir}   ..."/>
+        <echo message="-------------------------------------------------------"/>
+    </target>
+
+    <tstamp>
+        <format property="version.date" pattern="yyyy-MM-dd HH:mm:ss"/>
+    </tstamp>
+    <!-- clear-->
+    <target name="clean" description="clear all">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+    <!-- build -->
+    <target name="compile" description="compile javaFile" depends="clean">
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="src" encoding="UTF-8"
+               destdir="${build.dir}/classes"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}"
+               classpathref="compile.classpath"
+               fork="yes"
+               executable="C:\Program Files\Java\jdk1.8.0_20\bin\javac"
+               compiler="javac1.8"
+                />
+        <copy overwrite="true" todir="${build.dir}/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="export" description="export WebApp" depends="compile">
+        <mkdir dir="${dist.dir}/META-INF"/>
+        <manifest file="${dist.dir}/META-INF/MANIFEST.MF">
+            <attribute name="Created-Time" value="${version.date}"/>
+        </manifest>
+        <copy overwrite="true" todir="${dist.dir}">
+            <fileset dir="web"/>
+        </copy>
+        <mkdir dir="${dist.dir}/WEB-INF/classes"/>
+        <copy overwrite="true" todir="${dist.dir}/WEB-INF/classes">
+            <fileset dir="${build.dir}/classes"/>
+        </copy>
+        <mkdir dir="${dist.dir}/WEB-INF/lib"/>
+        <copy overwrite="true" todir="${dist.dir}/WEB-INF/lib">
+            <path refid="compile.classpath"/>
+        </copy>
+        <delete file="${dist.dir}/WEB-INF/lib/javaee.jar"/>
+    </target>
+</project>

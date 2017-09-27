@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.system.SysMenuDao">
+    <select id="getSysMenu" parameterType="SysMenu" resultType="SysMenu">
+        select * from T_SYS_MENU
+        <where>
+            <if test="nodeid!=null">
+                NODEID=#{nodeid}</if>
+            <if test="nodelevel!=null">
+                AND NODELEVEL=#{nodelevel}</if>
+            <if test="nodecode!=null">
+                AND NODECODE=#{nodecode}</if>
+            <if test="nodetext!=null">
+                AND NODETEXT=#{nodetext}</if>
+            <if test="path!=null">
+                AND PATH=#{path}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+
+        </where>
+    </select>
+
+
+    <select id="getSysMenuGroup" parameterType="SysMenu" resultType="hashMap">
+        select IFNULL(COUNT(NODEID),0) CNT,IFNULL(MAX(NODEID),0) MAXID,IFNULL(MIN(NODEID),0) MINID from T_SYS_MENU
+        <where>
+            <if test="nodeid!=null">
+                NODEID=#{nodeid}</if>
+            <if test="nodelevel!=null">
+                AND NODELEVEL=#{nodelevel}</if>
+            <if test="nodecode!=null">
+                AND NODECODE=#{nodecode}</if>
+            <if test="nodetext!=null">
+                AND NODETEXT=#{nodetext}</if>
+            <if test="path!=null">
+                AND PATH=#{path}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+
+        </where>
+    </select>
+
+
+
+    <select id="getSysMenuList" parameterType="SysMenu" resultType="SysMenu">
+        select * from T_SYS_MENU
+        <where>
+            <if test="nodeid!=null">
+                NODEID=#{nodeid}</if>
+            <if test="nodelevel!=null">
+                AND NODELEVEL=#{nodelevel}</if>
+            <if test="nodecode!=null">
+                AND NODECODE=#{nodecode}</if>
+            <if test="nodetext!=null">
+                AND NODETEXT=#{nodetext}</if>
+            <if test="path!=null">
+                AND PATH=#{path}</if>
+            <if test="mtype!=null">
+                AND MTYPE=#{mtype}</if>
+            <if test="navigationid1!=null">
+                AND NAVIGATIONID1=#{navigationid1}</if>
+            <if test="navigationid2!=null">
+                AND NAVIGATIONID2=#{navigationid2}</if>
+        </where>
+        ORDER BY  NAVIGATIONID1,NAVIGATIONID2 ,NODECODE,NODELEVEL
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <select id="getSysMenuListByRoleids" parameterType="SysStaff" resultType="SysMenu">
+        SELECT a.* FROM T_SYS_MENU a,T_SYS_ROLEMENUS b
+        <where>
+            <if test="1==1">
+                a.NODEID=b.NODEID
+            </if>
+            <if test="roleid!=null">
+                AND b.ROLEID=#{roleid}</if>
+        </where>
+        ORDER BY a.NAVIGATIONID1,a.NAVIGATIONID2 ,a.NODECODE,a.NODELEVEL
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+
+    <insert id="addSysMenu" useGeneratedKeys="true" keyProperty="nodeid" parameterType="SysMenu">
+INSERT INTO T_SYS_MENU (NODEID,NODELEVEL,NODECODE,NODETEXT,PATH,MTYPE,NAVIGATIONID1,NAVIGATIONID2)
+values(#{nodeid},#{nodelevel},#{nodecode},#{nodetext},#{path},#{mtype},#{navigationid1},#{navigationid2})
+    </insert>
+
+
+
+    <update id="updateSysMenu" parameterType="SysMenu">
+        update T_SYS_MENU
+        <set>
+            <if test="nodelevel!=null">NODELEVEL=#{nodelevel},</if>
+            <if test="nodecode!=null">NODECODE=#{nodecode},</if>
+            <if test="nodetext!=null">NODETEXT=#{nodetext},</if>
+            <if test="path!=null">PATH=#{path},</if>
+            <if test="mtype!=null">MTYPE=#{mtype},</if>
+            <if test="navigationid1!=null">NAVIGATIONID1=#{navigationid1},</if>
+            <if test="navigationid2!=null">NAVIGATIONID2=#{navigationid2},</if>
+        </set>
+        where NODEID=#{nodeid}
+    </update>
+
+
+
+    <delete id="deleteSysMenu" parameterType="SysMenu">
+        delete from T_SYS_MENU
+        where NODEID=#{nodeid}
+    </delete>
+
+
+    <update id="updateSysMenuByNavigationid" parameterType="SysMenu">
+        update T_SYS_MENU
+        <set>
+            <if test="nodetext!=null">NODETEXT=#{nodetext},</if>
+        </set>
+        where NAVIGATIONID1=#{navigationid1} AND    NAVIGATIONID2=#{navigationid2}
+    </update>
+
+</mapper>

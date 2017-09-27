@@ -1,0 +1,371 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: #efefef;
+  color: #4a4a4a;
+  font-family: 'SimHei'; }
+
+ul, li, p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #4a4a4a;
+  cursor: pointer; }
+
+img {
+  border: none; }
+
+button {
+  cursor: pointer; }
+
+.container {
+  width: 100%; }
+
+.center {
+  margin: 0 auto;
+  width: 1260px;
+  position: relative; }
+
+.clear {
+  clear: both; }
+
+.header {
+  width: 100%;
+  height: 130px;
+  background-color: #fff;
+  text-align: center; }
+
+.header .logo {
+  float: left;
+  height: 87px;
+  width: 270px;
+  margin: 22px 38px 0 0; }
+
+.header .center {
+  height: 130px; }
+
+.header .headerleft {
+  float: left; }
+
+.header .searchbox {
+  float: right;
+  margin-top: 49px; }
+
+.header .searchtext {
+  height: 34px;
+  width: 188px;
+  border: 1px solid #4a4a4a;
+  float: left;
+  text-align: left; }
+
+.header .searchtext input {
+  line-height: 34px;
+  height: 34px;
+  width: 168px;
+  padding: 0 10px;
+  border: none;
+  color: #4a4a4a; }
+
+.header #login {
+  margin: 5px 10px auto 30px;
+  height: 28px;
+  width: 56px;
+  border-radius: 5px;
+  background-color: #f00;
+  border: none;
+  color: #eee;
+  cursor: pointer; }
+
+.header #regist {
+  height: 28px;
+  width: 56px;
+  border-radius: 5px;
+  background-color: #bbb;
+  border: none;
+  color: #eee;
+  cursor: pointer; }
+
+.headernav {
+  list-style: none;
+  text-align: left;
+  float: left; }
+
+.headernav ul {
+  display: none;
+  position: absolute;
+  z-index: 999; }
+
+.headernav > li {
+  width: 117px;
+  font-size: 18px; }
+
+.headernav > li {
+  float: left; }
+
+.headernav li a {
+  background: #fff;
+  color: #514b4b;
+  display: block;
+  text-align: center;
+  line-height: 50px; }
+
+.headernav > li > a {
+  line-height: 130px; }
+
+.headernav li ul {
+  width: 100px;
+  margin-left: 8px;
+  margin-top: -40px;
+  border: 1px solid #eee; }
+
+.headernav li li a {
+  font-size: 14px; }
+
+.headernav .navcurrent {
+  font-weight: bolder; }
+
+.headernav .subcurrent {
+  background: #f00;
+  color: #fff; }
+
+.footer {
+  width: 100%;
+  height: 90px;
+  background-color: #111;
+  font-size: 15px;
+  color: #555; }
+
+.footer .left {
+  display: block;
+  float: left;
+  margin-top: 20px; }
+
+.footer .left .bl {
+  display: block;
+  border-left: 5px solid #bbb;
+  padding-left: 10px; }
+
+.footer .left .bb {
+  display: block;
+  padding-left: 15px;
+  margin-top: 10px; }
+
+.footer .right {
+  display: block;
+  float: right;
+  margin-top: 20px;
+  border-left: 5px solid #bbb;
+  padding-left: 10px; }
+
+.slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative; }
+
+.slide .slide-box {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.slide .slide-box li {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%; }
+
+.slide .slide-box li:first-child {
+  display: list-item; }
+
+.slide .slide-box li img {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+
+.slide .slide-box li .slide-glass {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -40px;
+  width: 250px;
+  height: 80px;
+  background: #55c0e2;
+  text-align: center; }
+
+.slide .slide-box li .slide-glass p {
+  margin-top: 15px;
+  line-height: 25px;
+  font-weight: bolder;
+  color: #fff; }
+
+.slide .slide-btn {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  height: 8px;
+  overflow: hidden; }
+
+.slide .slide-btn li {
+  float: left;
+  width: 30px;
+  height: 8px;
+  margin-left: 15px;
+  background: #fff; }
+
+.slide-btn-active {
+  background: #e2332a !important; }
+
+.containleft {
+  float: left;
+  background: #fff;
+  width: 180px;
+  margin-bottom: 10px; }
+
+.containleft h1 {
+  color: #e2332a;
+  line-height: 50px;
+  font-size: 20px;
+  border-left: 3px solid red;
+  padding-left: 17px; }
+
+.containleft #leftnav li img {
+  padding-left: 40px;
+  width: 8px;
+  height: 10px;
+  float: left;
+  margin: 15px 5px; }
+
+.containleft #leftnav li a {
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+  display: block;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center; }
+
+.containleft #leftnav li.current > a {
+  color: #fff;
+  border: none;
+  background: #e2332a; }
+
+.containright {
+  padding: 10px 0;
+  margin-left: 200px; }
+
+.containright .detail {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #aaa;
+  padding: 30px;
+  display: none; }
+
+.containright .detail h2 {
+  margin-top: 30px;
+  margin-left: 110px; }
+
+.containright .detail p {
+  margin-top: 50px; }
+
+.containright .detail .detailimg {
+  float: left;
+  height: 80px;
+  width: 80px;
+  background: #eee; }
+
+.containright .page {
+  height: 24px;
+  margin-top: 10px; }
+
+.containright .page li {
+  float: left;
+  height: 22px;
+  width: 22px;
+  line-height: 22px;
+  border: 1px solid #c7c7c7;
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer; }
+
+.containright .page li.active {
+  background: #e2332a; }
+
+.containright .page li.active a {
+  color: #eee; }
+
+.alert-shadow {
+  background: #000;
+  opacity: 0.4;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: none; }
+
+.alert-modal {
+  width: 400px;
+  height: 200px;
+  background: #fff;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-left: -200px;
+  margin-top: -100px;
+  display: none; }
+
+.alert-modal .close {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 15px;
+  width: 15px;
+  cursor: pointer; }
+
+.alert-modal .message {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #000;
+  margin-top: 50px; }
+
+.alert-modal .btns {
+  margin-top: 40px;
+  position: relative;
+  left: 50%;
+  margin-left: -125px; }
+
+.alert-modal .btns a {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+.alert-modal .btns .retlogin {
+  background: #e2332a;
+  color: #fff; }
+
+.alert-modal .btns .rethome {
+  margin-left: 50px;
+  border: 1px solid #aaa; }

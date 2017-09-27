@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="commons-dbcp2-2.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../javalib/commons-dbcp2/commons-pool2-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../javalib/commons-dbcp2/commons-dbcp2-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

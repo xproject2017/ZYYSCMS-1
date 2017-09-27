@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.core.dao.foundcms.BusiVipDao">
+    <select id="getBusiVip" parameterType="BusiVip" resultType="BusiVip">
+        select * from T_BUSI_VIP
+        <where>
+            <if test="vipid!=null">
+                VIPID=#{vipid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="username!=null">
+                AND username=#{username}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiVipGroup" parameterType="BusiVip" resultType="hashMap">
+        select IFNULL(COUNT(VIPID),0) CNT,IFNULL(MAX(VIPID),0) MAXID,IFNULL(MIN(VIPID),0) MINID from T_BUSI_VIP
+        <where>
+            <if test="vipid!=null">
+                VIPID=#{vipid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="username!=null">
+                AND username=#{username}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+
+        </where>
+    </select>
+
+    <select id="getBusiVipList" parameterType="BusiVip" resultType="BusiVip">
+        select * from T_BUSI_VIP
+        <where>
+            <if test="vipid!=null">
+                VIPID=#{vipid}</if>
+            <if test="ustatus!=null">
+                AND USTATUS=#{ustatus}</if>
+            <if test="userpassword!=null">
+                AND USERPASSWORD=#{userpassword}</if>
+            <if test="userstatus!=null">
+                AND USERSTATUS=#{userstatus}</if>
+            <if test="usertelephone!=null">
+                AND USERTELEPHONE=#{usertelephone}</if>
+            <if test="uname!=null">
+                AND UNAME=#{uname}</if>
+            <if test="username!=null">
+                AND username=#{username}</if>
+            <if test="gender!=null">
+                AND GENDER=#{gender}</if>
+            <if test="createtime!=null">
+                AND CREATETIME>=#{createtime}</if>
+        </where> ORDER BY CREATETIME DESC
+        <if test="currentPage!=null and pageSize!=null">
+            <![CDATA[ LIMIT #{currentSize}, #{pageSize} ]]>
+        </if></select>
+
+    <insert id="addBusiVip" useGeneratedKeys="true" keyProperty="vipid" parameterType="BusiVip">
+        INSERT INTO T_BUSI_VIP (VIPID,USTATUS,USERNAME,USERPASSWORD,USERSTATUS,USERTELEPHONE,UNAME,GENDER,CREATETIME,SAVETIME)
+        values(#{vipid},#{ustatus},#{username},#{userpassword},#{userstatus},#{usertelephone},#{uname},#{gender},NOW(),NOW())
+    </insert>
+
+    <update id="updateBusiVip" parameterType="BusiVip">
+        update T_BUSI_VIP
+        <set>
+            <if test="ustatus!=null">USTATUS=#{ustatus},</if>
+            <if test="userpassword!=null">USERPASSWORD=#{userpassword},</if>
+            <if test="userstatus!=null">USERSTATUS=#{userstatus},</if>
+            <if test="usertelephone!=null">USERTELEPHONE=#{usertelephone},</if>
+            <if test="uname!=null">UNAME=#{uname},</if>
+            <if test="gender!=null">GENDER=#{gender},</if>
+            <if test="username!=null">USERNAME=#{username},</if>
+            <if test="1==1">SAVETIME=NOW(),</if>
+        </set>
+        where VIPID=#{vipid}
+        AND SAVETIME=#{savetime}
+    </update>
+
+    <delete id="deleteBusiVip" parameterType="BusiVip">
+        delete from T_BUSI_VIP
+        where VIPID=#{vipid}
+    </delete>
+</mapper>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/dburl" auth="Container" type="javax.sql.DataSource"
+              username="ca" password="password"  driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://10.12.0.13:3306/cmsdb" maxActive="4" maxIdle="4" maxWait="5000"
+              removeAbandoned="false" removeAbandonedTimeout="60" logAbandoned="true"
+              testOnBorrow="true" validationQuery="select 1" connectionProperties="allowMultiQueries=true;" />
+</Context>

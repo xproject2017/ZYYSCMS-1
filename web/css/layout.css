@@ -1,0 +1,54 @@
+body,div,p,a,h3,iframe{ margin:0; padding:0; }
+html{ -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height:100%; padding-top:98px; overflow:hidden; }
+body{ height:100%;font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;font-size: 12px;letter-spacing:1px;background-color: #eaeaea;}
+.header{ height:98px; position:relative; margin-top:-98px;min-width: 1024px;overflow: hidden;background: url(/image/header.jpg) no-repeat;background-size: 100% 98px;}
+.header .first{position:relative;width: 100%;height: 48px;line-height: 48px;padding: 0 0 0 15px;color: #fff;font-size: 16px;}
+.header .first img{vertical-align: middle}
+.header .first b{float:right;padding: 0 30px 0 5px;font-size: 11px;cursor: pointer;}
+.first .userspan{float:right;padding:0 25px;cursor: pointer;font-size: 11px;background: url(/image/user.png) no-repeat;background-position:10px;background-size: 12px;text-decoration: underline;}
+.header .second{position:relative;width: 100%;height: 50px;line-height: 50px;}
+.header .messageicon{float:right;padding:0 25px;cursor: pointer;font-size: 11px;background: url(/image/message.png) no-repeat;background-position:6px 20px;background-size: 16px 12px;text-decoration: underline;}
+
+/*重写boostrap中对a标签的样式定义（只针对头部菜单）*/
+.second a{color: #fff;text-decoration: none;border: 0;outline:none;}
+.second a:link{color: #fff;text-decoration: none;border: 0;outline:none;}
+.second a:hover{color: #fff;text-decoration: none;border: 0;outline:none;}
+.second a:active{color: #fff;text-decoration: none;border: 0;outline:none;}
+.second a:visited{color: #fff;text-decoration: none;border: 0;outline:none;}
+
+.foldNav a{text-decoration: none;border: 0;outline:none;}
+.foldNav a:link{text-decoration: none;border: 0;outline:none;}
+.foldNav a:hover{text-decoration: none;border: 0;outline:none;}
+.foldNav a:active{text-decoration: none;border: 0;outline:none;}
+.foldNav a:visited{text-decoration: none;border: 0;outline:none;}
+
+/*.mainhtml{ position:relative; overflow:hidden; height: calc(100% - 30px);height: -moz-calc(100% - 30px);height: -webkit-calc(100% - 30px);}*/
+.boby-bottom{position: relative;width: 100%;height: 30px;line-height:30px;background-color:#464646;text-align: center;color: #fff;}
+.iframeWrap{ position:relative; overflow:hidden;height: calc(100% - 30px);height: -moz-calc(100% - 30px);height: -webkit-calc(100% - 30px);background-color:#eaeaea; }
+.iframeLeft{ position:absolute; top:10px; left:0; height: calc(100% - 20px);height: -moz-calc(100% - 20px);height: -webkit-calc(100% - 20px); width:210px;background-color: #fff;
+    border-bottom: 1px solid #b8b8b8;
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+.zindex-div{position: absolute;z-index: 3;width: 15px;opacity:0.8;filter:alpha(opacity =80);background-color:#eaeaea;top:0; height: 100%;}
+.iframeRight{margin-left:211px; overflow:hidden; height:100%;top:0;position: absolute;width: calc(100% - 211px);width: -moz-calc(100% - 211px);width: -webkit-calc(100% - 211px);}
+iframe{ height:100%; width:100%;}
+
+/*以下为头部菜单样式*/
+ul{list-style: none;padding: 0;margin: 0;font-size: 15px;}
+li{float: left;padding: 0;}
+li a{text-decoration:none;color: #fff;padding: 0 20px;border-right: 1px solid rgba(255,255,255,0.1);}
+.active{background-color:rgba(255,255,255,0.3);font-size: 17px; }
+
+/*以下为左侧菜单样式*/
+.foldNav {width:100%; z-index:101;position: absolute;}
+.foldNav h3{ font:normal 12px/30px 'Microsoft yahei'; color:#8b8b8b; padding-left:29px; position:relative; }
+.foldNav a{ display:block; height:46px; font:normal 14px/46px 'Microsoft yahei'; color:#363636; padding-left:55px; outline:none;text-decoration:none; }
+.foldNav a.hover01, .foldNav a.hover01:hover{  background: url(/image/m2.png) no-repeat;background-size: 215px 50px; color:#fff;font-size: 15px; }
+.foldNav a.hover02, .foldNav a.hover02:hover{  background: url(/image/m1.png) no-repeat;background-size: 215px 50px; color:#fff;font-size: 15px; }
+.foldNav a:hover{background:#f1f1f1; color:#848484;}
+
+.foldSec{width: 93%;margin-left:7%;height: auto;display: none;background-color: #f9f9f9;}
+.foldSec a{padding-left: 50px;color: #8b8b8b;}
+.foldSec a.hover01, .foldSec a.hover01:hover{  background: none; color:#099aff;font-size: 15px; }
